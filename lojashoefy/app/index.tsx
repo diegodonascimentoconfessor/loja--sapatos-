@@ -16,9 +16,9 @@ export default function Screen (){
                 resizeMode="cover"
             />
             <Text style={styles.h1}>Loja-Shoefy</Text>
-            <Text style={styles.h2}> compre Agora !.</Text>
+            <Text style={styles.h2}>  qualildade e Conforto.</Text>
             <Button
-                title="Começar as compras"
+                title=" compre Agora"
                 onPress={start}
             />
         </SafeAreaView>
