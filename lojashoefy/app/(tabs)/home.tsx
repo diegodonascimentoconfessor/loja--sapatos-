@@ -36,11 +36,11 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#fff' // Cor do texto
+        color: '#fff'
     },
     subtitle: {
         fontSize: 16,
-        color: '#fff' // Cor do texto
+        color: '#fff' 
     },
     list: {
         flex: 1,
