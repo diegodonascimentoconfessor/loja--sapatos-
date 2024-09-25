@@ -68,23 +68,23 @@ export const data: Data = {
         { id: 27, idCategory: 2, image: "https://m.media-amazon.com/images/I/51AzLiHEHML._AC_SY575_.jpg", title: "Sapato de Couro", description: "Durável e resistente.", price: 299.99 },
         { id: 28, idCategory: 2, image: "https://m.media-amazon.com/images/I/51++PAjdZAL._AC_SY625_.jpg", title: "Sapato Casual", description: "Perfeito para o dia a dia.", price: 199.99 },
         { id: 29, idCategory: 2, image: "", title: "", description: "", price: 89.00 },
-        { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
-        { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
-        { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
-        { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
-        { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
-        { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
-        { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
-        { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
-        { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
-        { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
-        { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
-        { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
-        { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
-        { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
-        { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
-        { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
-        
+       // { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
+       // { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
+       // { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
+       // { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
+       // { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
+       // { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
+       // { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
+        //{ id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
+       // { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
+        //{ id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
+        //{ id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
+       // { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
+       // { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
+        //{ id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
+       // { id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
+        //{ id: , idCategory: 2, image: "", title: "", description: "", price: 89.00 }
+
         // ... Adicionar mais 22 produtos na categoria Sapatos
         
         // Categoria: Sandálias (20 produtos)
