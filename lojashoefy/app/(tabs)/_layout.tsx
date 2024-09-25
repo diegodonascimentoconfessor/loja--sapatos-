@@ -26,6 +26,16 @@ export default function TabLayout(){
                     tabBarIcon :({color}) => <FontAwesome size={28} name="user" color={color}/>
             }}
         />
+        <Tabs.Screen 
+            name="Menu"
+            options={{
+                    title: 'Menu',
+                    tabBarIcon :({color}) => <FontAwesome size={28} name="user" color={color}/>
+            }}
+        />
+
+
+
         </Tabs>
     );
 }

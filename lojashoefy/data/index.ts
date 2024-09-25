@@ -64,9 +64,7 @@ export const data: Data = {
 
         
         // Categoria: Sapatos (25 produtos)
-        { id: 26, idCategory: 2, image: "https://picsum.photos/id/25/200/200", title: "Sapato Social", description: "Elegante para eventos formais.", price: 499.99 },
-        { id: 27, idCategory: 2, image: "https://picsum.photos/id/26/200/200", title: "Sapato de Couro", description: "Durável e resistente.", price: 299.99 },
-        { id: 28, idCategory: 2, image: "https://picsum.photos/id/27/200/200", title: "Sapato Casual", description: "Perfeito para o dia a dia.", price: 199.99 },
+        
         // ... Adicionar mais 22 produtos na categoria Sapatos
         
         // Categoria: Sandálias (20 produtos)
