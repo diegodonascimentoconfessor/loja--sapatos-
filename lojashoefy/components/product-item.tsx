@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
 
     },
     img:{
-        width: 150,
-        height: 100,
+        width: 100,
+        height: 90,
         borderRadius: 10,
         backgroundColor: "#CCCCCC",
         marginRight: 20

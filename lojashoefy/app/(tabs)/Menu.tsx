@@ -4,7 +4,7 @@ import { useRouter } from 'expo-router'; // Importe useRouter para navegação
 
 const LoginScreen = () => {
     const router = useRouter();
-    const [isLogin, setIsLogin] = useState(true); // Estado para alternar entre login e cadastro
+    const [isLogin, setIsLogin] = useState(true); 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');

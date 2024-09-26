@@ -6,10 +6,15 @@ export default function Screen() {
         
 
             <View style={styles.container}>
-                <Text style={styles.title}>Diego do Nascimento Confessor</Text>
+                <Text style={styles.title}> Lojas-Shoefy</Text>
                 <Text style={styles.description}>
-                    Sou um estudante de Desenvolvimento de Sistemas no SENAC, com paixão por criar soluções eficientes e inovadoras. 
-                    Meu foco é aprender e aplicar novos conhecimentos em programação, buscando sempre aprimorar minhas habilidades e contribuir para projetos desafiadores.
+                O Shoefy é um aplicativo de gerenciamento e compra de sapatos, desenvolvido com um forte foco em tecnologia e usabilidade. Criado para atender tanto entusiastas de moda quanto profissionais da área de vendas, o Shoefy visa transformar a experiência de compra de calçados por meio de soluções tecnológicas avançadas.
+
+Tecnologias Utilizadas:
+
+React Native: O Shoefy é construído usando React Native, uma poderosa framework para o desenvolvimento de aplicações móveis nativas. React Native permite que o aplicativo ofereça uma experiência de usuário fluida e responsiva, aproveitando o mesmo código base para iOS e Android. Isso garante uma performance otimizada e uma interface de usuário consistente, com transições suaves e interações rápidas.
+
+
                 </Text>
             </View>
         </SafeAreaView>
