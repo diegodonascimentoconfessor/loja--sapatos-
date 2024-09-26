@@ -27,6 +27,7 @@ export const CategoryItem = ({data}: Props) =>{
 }
 const styles = StyleSheet.create({
     container:{
+       width:'90%',
         margin: 10,
         backgroundColor: "#333333",
         borderRadius: 10
@@ -39,11 +40,12 @@ const styles = StyleSheet.create({
     bg:{
         height: 150,
         backgroundColor: "#000000",
-        opacity: 0.6,
+        opacity: 0.4,
         borderRadius: 10,
         marginTop: -150
     },
     box:{
+     
         height: 150,
         marginTop: -150,
         justifyContent: 'center',

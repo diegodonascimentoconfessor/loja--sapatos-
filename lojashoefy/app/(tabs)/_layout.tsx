@@ -8,7 +8,7 @@ export default function TabLayout() {
         tabBarStyle: {
           backgroundColor: '#0D0D0D', // Define a cor da barra
         },
-        tabBarActiveTintColor: '#1F35B7', // Cor dos ícones ativos
+        tabBarActiveTintColor: '#3F89C6', // Cor dos ícones ativos
         tabBarInactiveTintColor: '#888888', // Cor dos ícones inativos
       }}
     >

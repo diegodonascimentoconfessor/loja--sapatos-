@@ -29,10 +29,11 @@ const styles = StyleSheet.create({
     container:{
         flexDirection: 'row',
         marginBottom: 20
+
     },
     img:{
-        width: 200,
-        height: 160,
+        width: 150,
+        height: 100,
         borderRadius: 10,
         backgroundColor: "#CCCCCC",
         marginRight: 20
