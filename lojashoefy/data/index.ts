@@ -20,8 +20,8 @@ export const data: Data = {
         },
         {
             id: 3,
-            title: 'Sandálias',
-            cover: 'https://t-static.dafiti.com.br/MO1WwDlAG3zrFYCzbUfSAOvKV2Y=/fit-in/430x623/static.dafiti.com.br/p/vizzano-sand%c3%a1lia-vizzano-salto-grosso-nude-5137-9856547-1-zoom.jpg'
+            title: 'Sandálias Masculinas ',
+            cover: 'https://m.media-amazon.com/images/I/41n3PfklF2L._AC_SY575_.jpg'
         },
         {
             id: 4,
@@ -30,7 +30,7 @@ export const data: Data = {
         },
         {
             id: 5,
-            title: 'Sapatos Femininos',
+            title: 'Sandálias Femininas',
             cover: 'https://t-static.dafiti.com.br/MO1WwDlAG3zrFYCzbUfSAOvKV2Y=/fit-in/430x623/static.dafiti.com.br/p/vizzano-sand%c3%a1lia-vizzano-salto-grosso-nude-5137-9856547-1-zoom.jpg'
         }
     ],
@@ -255,24 +255,23 @@ export const data: Data = {
         // Categoria: Sapatos Femininos (15 produtos)
         { id: 82, idCategory: 5, image: "https://t-static.dafiti.com.br/IfwmUVloLLktUPuVsUWG7UT1mgE=/fit-in/430x623/static.dafiti.com.br/p/bebec%c3%aa-sand%c3%a1lia-anabela-bebec%c3%aa-lisa-anabela-off-white-9786-77638241-1-zoom.jpg", title: "Sapato Feminino Elegante", description: "Design moderno.", price: 129.99 },
         { id: 83, idCategory: 5, image: "https://images2.marisa.com.br/medias/sys_master/images/images/h1a/hdf/15349409284126/SANDALIA-MOL-5259846-NAPA-ROSA-RSC-38-10055775960-C1.jpg", title: "Sandália Feminina", description: "Confortável e estilosa.", price: 79.99 },
-        { id: 84, idCategory: 5, image: "https://d87n9o45kphpy.cloudfront.net/Custom/Content/Products/28/19/2819483_sandalia-penelope-salto-bloco-detalhe-tiras-strass-cobre-5199554_l1_638612353417557557.jpg", title: "", description: "", price: },
-        { id: 85, idCategory: 5, image: "https://sonhodospes.vtexassets.com/arquivos/ids/471673/404850002--1-.jpg?v=638459510927300000", title: "", description: "", price:  },
-        { id: 86 , idCategory: 5, image: "", title: "", description: "", price: },
-        { id: 87, idCategory: 5, image: "", title: "", description: "", price: },
-        { id: 88, idCategory: 5, image: "", title: "", description: "", price: },
-        { id:89 , idCategory: 5, image: "", title: "", description: "", price: },
-        { id:90 , idCategory: 5, image: "", title: "", description: "", price: },
-        { id:91 , idCategory: 5, image: "", title: "", description: "", price: },
-        { id: 92, idCategory: 5, image: "", title: "", description: "", price: },
-        { id: 93, idCategory: 5, image: "", title: "", description: "", price: },
-        { id: 94, idCategory: 5, image: "", title: "", description: "", price: },
-        { id:95 , idCategory: 5, image: "", title: "", description: "", price: },
-        { id: 96, idCategory: 5, image: "", title: "", description: "", price: },
-        { id: 97, idCategory: 5, image: "", title: "", description: "", price: },
-        { id: 98 , idCategory: 5, image: "", title: "", description: "", price: },
-        { id:99 , idCategory: 5, image: "", title: "", description: "", price: },
-        { id:100 , idCategory: 5, image: "", title: "", description: "", price: },
-
+        { id: 84, idCategory: 5, image: "https://d87n9o45kphpy.cloudfront.net/Custom/Content/Products/28/19/2819483_sandalia-penelope-salto-bloco-detalhe-tiras-strass-cobre-5199554_l1_638612353417557557.jpg", title: "Sandália Penélope Salto Bloco", description: "Sandália com tiras de strass e salto bloco. Cor cobre, ideal para festas e eventos.", price: 159.90 },
+{ id: 85, idCategory: 5, image: "https://sonhodospes.vtexassets.com/arquivos/ids/471673/404850002--1-.jpg?v=638459510927300000", title: "Sandália Strass Elegante", description: "Sandália com detalhes em strass, perfeita para compor um look sofisticado.", price: 189.90 },
+{ id: 86, idCategory: 5, image: "https://sonhodospes.vtexassets.com/arquivos/ids/460495/402375868--1-.jpg?v=638398204774070000", title: "Sandália Rasteira com Tiras", description: "Sandália rasteira confortável com tiras delicadas, ideal para o dia a dia.", price: 99.90 },
+{ id: 87, idCategory: 5, image: "https://sonhodospes.vtexassets.com/arquivos/ids/513332/412740033--1-.jpg?v=638628931354870000", title: "Sandália de Festa com Salto", description: "Elegante sandália de festa com salto alto e tiras brilhantes. Perfeita para eventos.", price: 249.90 },
+{ id: 88, idCategory: 5, image: "https://m.media-amazon.com/images/I/51YhBJDp4TL._AC_SY575_.jpg", title: "Sandália Casual Vizzano", description: "Sandália Vizzano com salto grosso e confortável, ideal para uso diário.", price: 179.90 },
+{ id: 89, idCategory: 5, image: "https://t-static.dafiti.com.br/MO1WwDlAG3zrFYCzbUfSAOvKV2Y=/fit-in/430x623/static.dafiti.com.br/p/vizzano-sand%c3%a1lia-vizzano-salto-grosso-nude-5137-9856547-1-zoom.jpg", title: "Sandália Vizzano Salto Grosso", description: "Sandália nude com salto grosso, combina conforto e elegância.", price: 149.90 },
+{ id: 90, idCategory: 5, image: "https://sonhodospes.vtexassets.com/arquivos/ids/513021/413152152--1-.jpg?v=638621107559170000", title: "Sandália Brilhante Feminina", description: "Modelo com brilhos em todas as tiras, para quem gosta de chamar atenção.", price: 199.90 },
+{ id: 91, idCategory: 5, image: "https://dcdn.mitiendanube.com/stores/001/148/045/products/_mg_8516-f0eb6c101848911e5e17186536090310-1024-1024.webp", title: "Sandália Confortável Strass", description: "Sandália com sola macia e tiras de strass, perfeita para conforto e estilo.", price: 139.90 },
+{ id: 92, idCategory: 5, image: "https://m.media-amazon.com/images/I/41Q5rl7TrpL._AC_SY575_.jpg", title: "Sandália Feminina Casual", description: "Sandália casual com detalhes sutis, ótima para looks casuais e descontraídos.", price: 129.90 },
+{ id: 93, idCategory: 5, image: "https://d87n9o45kphpy.cloudfront.net/Custom/Content/Products/27/95/2795858_sandalia-rasteira-beira-rio-detalhe-strass-holografico-preto-5194924_l1_638416964164553668.jpg", title: "Sandália Beira Rio Rasteira", description: "Rasteira com detalhes em strass holográfico, super moderna.", price: 109.90 },
+{ id: 94, idCategory: 5, image: "https://cdn.shoppub.io/cdn-cgi/image/w=1000,h=1000,q=80,f=auto/lojadoctorpe/media/uploads/produtos/foto/fgkdoydy/sandalia_feminina_extremamente_confortavel_com_salto_baixo_em_couro_legitimo_5438_1622_marinho_porcelana.png", title: "Sandália de Couro Confortável", description: "Sandália de couro legítimo com salto baixo, conforto extremo.", price: 219.90 },
+{ id: 95, idCategory: 5, image: "https://m.media-amazon.com/images/I/51YhBJDp4TL._AC_SY575_.jpg", title: "Sandália Feminina Vizzano", description: "Modelo clássico da Vizzano com salto médio e design atemporal.", price: 159.90 },
+{ id: 96, idCategory: 5, image: "https://m.media-amazon.com/images/I/51DyVNnGF0L._AC_SY575_.jpg", title: "Sandália Plataforma Estilosa", description: "Sandália plataforma com salto robusto, ideal para quem gosta de estilo marcante.", price: 169.90 },
+{ id: 97, idCategory: 5, image: "https://sonhodospes.vtexassets.com/arquivos/ids/493050/402024539--1-.jpg?v=638548533473070000", title: "Sandália Feminina Salto Baixo", description: "Sandália confortável com salto baixo, perfeita para o dia a dia.", price: 99.90 },
+{ id: 98, idCategory: 5, image: "https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/hef/h5d/h00/h00/11748748427294/HEADLESS-1297700330005U-01-BASEIMAGE-Midres-Headless.jpg", title: "Sandália Arezzo Salto Alto", description: "Sandália Arezzo com salto alto e tiras finas, para uma ocasião especial.", price: 259.90 },
+{ id: 99, idCategory: 5, image: "https://m.media-amazon.com/images/I/61W2b7nTJmL._AC_SY575_.jpg", title: "Sandália Plataforma Modern", description: "Sandália plataforma com design moderno e detalhes minimalistas.", price: 179.90 },
+{ id: 100, idCategory: 5, image: "https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h3b/hcd/h00/h00/10894272626718/HEADLESS-0240561230070U-01-BASEIMAGE-Midres-Headless.jpg", title: "Sandália Arezzo Nude", description: "Sandália Arezzo nude com salto médio, versátil e elegante.", price: 199.90 },
 
     ]
 };
