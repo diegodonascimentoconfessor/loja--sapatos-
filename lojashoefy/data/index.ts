@@ -230,30 +230,49 @@ export const data: Data = {
         // ... Adicionar mais 17 produtos na categoria Sandálias
         
         // Categoria: Sapatos Infantis (15 produtos)
-        { id: 66, idCategory: 4, image: "https://cdn.dooca.store/154615/products/10na001-242-amarelo-4-2_1600x1600+fill_ffffff.jpg?v=1723140978", title: "", description: "", price: 49.99 },
-        { id: 67, idCategory: 4, image: "https://kimimocalcados.cdn.magazord.com.br/img/2024/06/produto/900/babuche-infantil-menino-3.jpg?ims=600x600", title: "", description: "", price: 39.99 },
-        { id: 68, idCategory: 4, image: "https://kimimocalcados.cdn.magazord.com.br/img/2024/06/produto/862/sandalia-infantil-menina-3.jpg?ims=600x600", title: "", description: "", price: 89.99 },
-        { id: 69, idCategory: 4, image: "https://cdn.dooca.store/154615/products/10me001-242-rosa-2-2_620x620+fill_ffffff.jpg?v=1723140907", title: "", description: "", price: 89.99 },
-        { id: 70, idCategory: 4, image: "https://images.tcdn.com.br/img/img_prod/693399/sandalia_infantil_masculina_chinelo_infantil_masculino_1541_1_7cdd33455172d0c8921e0de9e1f73f47.jpg", title: "", description: "", price: 89.99 },
-        { id: 71, idCategory: 4, image: "https://static.netshoes.com.br/produtos/chinelo-infantil-ipanema-super-mario-menino/92/J07-7354-392/J07-7354-392_zoom1.jpg?ts=1719227470?ims=1088x", title: "", description: "", price: 89.99 },
-        { id: 72, idCategory: 4, image: "https://static.zattini.com.br/produtos/chinelo-infantil-grendene-ipanema-sonic-race-menino/87/CDT-2675-187/CDT-2675-187_zoom1.jpg?ts=1719857819?ims=1088x", title: "", description: "", price: 89.99 },
-        { id:73 , idCategory: 4, image: "https://cea.vtexassets.com/arquivos/ids/58911491-1200-auto?v=638591476334600000&width=1200&height=auto&aspect=true", title: "", description: "", price: 89.99 },
-        { id: 74, idCategory: 4, image: "https://havaianas.com.br/dw/image/v2/BDDJ_PRD/on/demandware.static/-/Sites-havaianas-master/default/dwc2349601/product-images/4148304_1069_TOP-TIMES-FLAMENGO_A.png?sw=680&sh=680", title: "", description: "", price: 89.99 },
-        { id: 75, idCategory: 4, image: "https://static.netshoes.com.br/produtos/papete-juvenil-rider-line-plus-ii/24/G71-3160-024/G71-3160-024_zoom1.jpg?ts=1719858817?ims=1088x  ", title: "", description: "", price: 89.99 },
-        { id: 76, idCategory: 4, image: "https://www.riachuelo.com.br/sandalia-papete-infantil-rider-free-style-grendene-15426084_sku_azul-claro?sku=15426084002&gad_source=1&gclid=CjwKCAjw6c63BhAiEiwAF0EH1ACXbeQx53PWhboOt9gcV1z9_4ej04k5rp8DlyN77ze8s_dlLB_FGBoC3BAQAvD_BwE  ", title: "", description: "", price: 89.99 },
-        { id: 77, idCategory: 4, image: "https://images2.marisa.com.br/medias/sys_master/images/images/hf9/he0/15788902481950/SANDALIA-INFO-GRENDENE-23050-AZM-23-24-10056320350-C1.jpg ", title: "", description: "", price: 89.99 },
-        { id: 78, idCategory: 4, image: "", title: "", description: "", price: 89.99 },
-        { id: 79, idCategory: 4, image: "", title: "", description: "", price: 89.99 },
-        { id: 80, idCategory: 4, image: "", title: "", description: "", price: 89.99 },
-        { id: 81, idCategory: 4, image: "", title: "", description: "", price: 89.99 },
+        
+          { id: 66, idCategory: 4, image: "https://cdn.dooca.store/154615/products/10na001-242-amarelo-4-2_1600x1600+fill_ffffff.jpg?v=1723140978", title: "Sandália Infantil Fashion - Amarelo", description: "Confortável e estilosa, essa sandália infantil é perfeita para dias de sol e diversão ao ar livre.", price: 44.90 },
+          { id: 67, idCategory: 4, image: "https://kimimocalcados.cdn.magazord.com.br/img/2024/06/produto/900/babuche-infantil-menino-3.jpg?ims=600x600", title: "Babuche Infantil Menino - Azul", description: "Babuche infantil leve e confortável, ideal para o dia a dia das crianças.", price: 34.99 },
+          { id: 68, idCategory: 4, image: "https://kimimocalcados.cdn.magazord.com.br/img/2024/06/produto/862/sandalia-infantil-menina-3.jpg?ims=600x600", title: "Sandália Infantil Menina - Rosa", description: "Linda sandália para meninas, com detalhes delicados e confortáveis para o uso diário.", price: 89.99 },
+          { id: 69, idCategory: 4, image: "https://cdn.dooca.store/154615/products/10me001-242-rosa-2-2_620x620+fill_ffffff.jpg?v=1723140907", title: "Sandália Infantil Confortável - Rosa", description: "Design moderno e cores vibrantes, ideal para acompanhar as pequenas nas brincadeiras.", price: 79.90 },
+          { id: 70, idCategory: 4, image: "https://images.tcdn.com.br/img/img_prod/693399/sandalia_infantil_masculina_chinelo_infantil_masculino_1541_1_7cdd33455172d0c8921e0de9e1f73f47.jpg", title: "Chinelo Infantil Masculino", description: "Chinelo casual e resistente para o dia a dia dos meninos.", price: 59.90 },
+          { id: 71, idCategory: 4, image: "https://static.netshoes.com.br/produtos/chinelo-infantil-ipanema-super-mario-menino/92/J07-7354-392/J07-7354-392_zoom1.jpg?ts=1719227470?ims=1088x", title: "Chinelo Infantil Ipanema Super Mario", description: "Diversão garantida com o chinelo do Super Mario para meninos.", price: 49.99 },
+          { id: 72, idCategory: 4, image: "https://static.zattini.com.br/produtos/chinelo-infantil-grendene-ipanema-sonic-race-menino/87/CDT-2675-187/CDT-2675-187_zoom1.jpg?ts=1719857819?ims=1088x", title: "Chinelo Infantil Grendene Sonic", description: "Chinelo inspirado no Sonic, ideal para crianças aventureiras.", price: 49.90 },
+          { id: 73, idCategory: 4, image: "https://cea.vtexassets.com/arquivos/ids/58911491-1200-auto?v=638591476334600000&width=1200&height=auto&aspect=true", title: "Sandália Infantil CEA Estilo Verão", description: "Leve e prática, a sandália perfeita para os dias mais quentes.", price: 64.99 },
+          { id: 74, idCategory: 4, image: "https://havaianas.com.br/dw/image/v2/BDDJ_PRD/on/demandware.static/-/Sites-havaianas-master/default/dwc2349601/product-images/4148304_1069_TOP-TIMES-FLAMENGO_A.png?sw=680&sh=680", title: "Chinelo Havaianas Top Flamengo", description: "Para os pequenos torcedores do Flamengo, com todo o conforto Havaianas.", price: 49.99 },
+          { id: 75, idCategory: 4, image: "https://static.netshoes.com.br/produtos/papete-juvenil-rider-line-plus-ii/24/G71-3160-024/G71-3160-024_zoom1.jpg?ts=1719858817?ims=1088x", title: "Papete Juvenil Rider Line Plus", description: "Papete resistente e confortável, perfeita para aventuras ao ar livre.", price: 69.99 },
+          { id: 76, idCategory: 4, image: "https://www.riachuelo.com.br/sandalia-papete-infantil-rider-free-style-grendene-15426084_sku_azul-claro?sku=15426084002&gad_source=1&gclid=CjwKCAjw6c63BhAiEiwAF0EH1ACXbeQx53PWhboOt9gcV1z9_4ej04k5rp8DlyN77ze8s_dlLB_FGBoC3BAQAvD_BwE", title: "Sandália Papete Infantil Rider Free Style", description: "Design esportivo e moderno para os pequenos atletas.", price: 79.90 },
+          { id: 77, idCategory: 4, image: "https://images2.marisa.com.br/medias/sys_master/images/images/hf9/he0/15788902481950/SANDALIA-INFO-GRENDENE-23050-AZM-23-24-10056320350-C1.jpg", title: "Sandália Infantil Grendene - Azul", description: "Leveza e praticidade para o dia a dia das crianças.", price: 69.90 },
+          { id: 78, idCategory: 4, image: "https://d87n9o45kphpy.cloudfront.net/Custom/Content/Products/27/99/2799791_sandalia-aranha-infantil-gabrielinha-fivela-neon-pink-5195623_z1_638470408149331007.jpg", title: "Sandália Infantil Gabrielinha - Rosa Neon", description: "Sandália estilosa com fivela, perfeita para meninas descoladas.", price: 79.99 },
+          { id: 79, idCategory: 4, image: "https://t-static.dafiti.com.br/1Q6pdwjyKfuvCItaAxfYOfZmEEk=/fit-in/430x623/static.dafiti.com.br/p/molekinha-sand%c3%a1lia-molekinha-infantil-color-rosa-8553-72897021-1-zoom.jpg", title: "Sandália Infantil Molekinha - Rosa", description: "Linda sandália rosa para meninas, com design confortável e durável.", price: 89.99 },
+          { id: 80, idCategory: 4, image: "https://static.netshoes.com.br/produtos/sandalia-infantil/76/QPV-1786-876/QPV-1786-876_zoom1.jpg?ts=1695055742?ims=1088x", title: "Sandália Infantil Casual", description: "Modelo casual e confortável, ideal para o dia a dia.", price: 49.90 },
+          { id: 81, idCategory: 4, image: "https://static.netshoes.com.br/produtos/sandalia-infantil/06/QPV-1786-006/QPV-1786-006_zoom1.jpg?ts=1695055744?ims=1088x", title: "Sandália Infantil Flexível", description: "Leve e flexível, projetada para oferecer o máximo de conforto às crianças.", price: 54.99 },
 
-
+        
+        
         // ... Adicionar mais 12 produtos na categoria Sapatos Infantis
 
         // Categoria: Sapatos Femininos (15 produtos)
-        { id: 86, idCategory: 5, image: "https://picsum.photos/id/85/200/200", title: "Sapato Feminino Elegante", description: "Design moderno.", price: 129.99 },
-        { id: 87, idCategory: 5, image: "https://picsum.photos/id/86/200/200", title: "Sandália Feminina", description: "Confortável e estilosa.", price: 79.99 },
-        { id: 88, idCategory: 5, image: "https://picsum.photos/id/87/200/200", title: "Salto Alto Feminino", description: "Elegante para ocasiões especiais.", price: 199.99 },
-        // ... Adicionar mais 12 produtos na categoria Sapatos Femininos
+        { id: 82, idCategory: 5, image: "https://t-static.dafiti.com.br/IfwmUVloLLktUPuVsUWG7UT1mgE=/fit-in/430x623/static.dafiti.com.br/p/bebec%c3%aa-sand%c3%a1lia-anabela-bebec%c3%aa-lisa-anabela-off-white-9786-77638241-1-zoom.jpg", title: "Sapato Feminino Elegante", description: "Design moderno.", price: 129.99 },
+        { id: 83, idCategory: 5, image: "https://images2.marisa.com.br/medias/sys_master/images/images/h1a/hdf/15349409284126/SANDALIA-MOL-5259846-NAPA-ROSA-RSC-38-10055775960-C1.jpg", title: "Sandália Feminina", description: "Confortável e estilosa.", price: 79.99 },
+        { id: 84, idCategory: 5, image: "https://d87n9o45kphpy.cloudfront.net/Custom/Content/Products/28/19/2819483_sandalia-penelope-salto-bloco-detalhe-tiras-strass-cobre-5199554_l1_638612353417557557.jpg", title: "", description: "", price: },
+        { id: 85, idCategory: 5, image: "https://sonhodospes.vtexassets.com/arquivos/ids/471673/404850002--1-.jpg?v=638459510927300000", title: "", description: "", price:  },
+        { id: 86 , idCategory: 5, image: "", title: "", description: "", price: },
+        { id: 87, idCategory: 5, image: "", title: "", description: "", price: },
+        { id: 88, idCategory: 5, image: "", title: "", description: "", price: },
+        { id:89 , idCategory: 5, image: "", title: "", description: "", price: },
+        { id:90 , idCategory: 5, image: "", title: "", description: "", price: },
+        { id:91 , idCategory: 5, image: "", title: "", description: "", price: },
+        { id: 92, idCategory: 5, image: "", title: "", description: "", price: },
+        { id: 93, idCategory: 5, image: "", title: "", description: "", price: },
+        { id: 94, idCategory: 5, image: "", title: "", description: "", price: },
+        { id:95 , idCategory: 5, image: "", title: "", description: "", price: },
+        { id: 96, idCategory: 5, image: "", title: "", description: "", price: },
+        { id: 97, idCategory: 5, image: "", title: "", description: "", price: },
+        { id: 98 , idCategory: 5, image: "", title: "", description: "", price: },
+        { id:99 , idCategory: 5, image: "", title: "", description: "", price: },
+        { id:100 , idCategory: 5, image: "", title: "", description: "", price: },
+
+
     ]
 };
