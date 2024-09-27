@@ -30,10 +30,11 @@ export default function Screen() {
                     <Text style={styles.price}>R$ {product.price.toFixed(2)}</Text>
                 </View>
             </ScrollView>
-            <View style={styles.ButtonArea}>
+            <View style={styles.buttonContainer}>
                 <Button
                     title="comprar agora"
                     onPress={comprar}
+                    style={styles.button} // Aplicar estilo personalizado
                 />
             </View>
         </SafeAreaView>
@@ -48,8 +49,17 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 10,
     },
-    ButtonArea: {
+    buttonContainer: {
         padding: 10,
+        alignItems: 'center', // Centraliza o botão horizontalmente
+    },
+    button: {
+        width: 150, // Define a largura do botão
+        height: 45, // Define a altura do botão
+        borderRadius: 8, // Bordas arredondadas
+        justifyContent: 'center', // Centraliza o texto verticalmente
+        alignItems: 'center', // Centraliza o texto horizontalmente
+        backgroundColor: '#007bff', // Cor de fundo do botão
     },
     img: {
         width: "100%",
