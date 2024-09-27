@@ -16,6 +16,7 @@ export default function TabLayout() {
         name="home"
         options={{
           title: 'Início',
+          headerShown: false,
           tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />
         }}
       />
@@ -31,6 +32,7 @@ export default function TabLayout() {
         name="Menu"
         options={{
           title: 'Menu',
+          headerShown: false,
           tabBarIcon: ({ color }) => <FontAwesome size={28} name="user" color={color} />
         }}
       />
@@ -38,6 +40,7 @@ export default function TabLayout() {
         name="about"
         options={{
           title: 'Sobre o Aplicativo',
+          headerShown: false,
           tabBarIcon: ({ color }) => <FontAwesome size={28} name="info-circle" color={color} />
         }}
       />

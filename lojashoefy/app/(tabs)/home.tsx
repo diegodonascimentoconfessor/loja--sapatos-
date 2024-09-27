@@ -34,9 +34,11 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ddd'
     },
     title: {
+        
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#fff'
+        color: '#fff',
+        marginTop:20
     },
     subtitle: {
         fontSize: 16,
