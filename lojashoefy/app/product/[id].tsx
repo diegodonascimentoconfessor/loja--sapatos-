@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#cccccc',
     },
     price: {
-        fontSize: 22,
+        fontSize: 20,
         textAlign: 'center',
     },
 });
