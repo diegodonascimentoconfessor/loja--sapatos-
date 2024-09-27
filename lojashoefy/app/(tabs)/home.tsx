@@ -24,14 +24,16 @@ export default function WelcomeScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f5f5f5' 
+        backgroundColor: '#ffffff' 
+
     },
     header: {
         padding: 20,
-        backgroundColor: '#3F89C6',
+        backgroundColor: '#000A3C',
         alignItems: 'center',
         borderBottomWidth: 1,
-        borderBottomColor: '#ddd'
+        borderBottomColor: '#ddd',
+        marginTop:30
     },
     title: {
         
