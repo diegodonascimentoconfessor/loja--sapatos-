@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Pressable, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, TextInput, Pressable, StyleSheet, SafeAreaView, Image } from 'react-native';
 import { useRouter } from 'expo-router'; // Importe useRouter para navegação
 
 const LoginScreen = () => {
@@ -21,6 +21,12 @@ const LoginScreen = () => {
 
     return (
         <SafeAreaView style={styles.safeArea}>
+            <Image
+                source={require('../../assets/logo1.png')}
+                style={styles.logo}
+                resizeMode="cover"
+            />
+            
             <View style={styles.container}>
                 <Text style={styles.title}>{isLogin ? 'Login' : 'Cadastro'}</Text>
 
@@ -76,13 +82,20 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
+        backgroundColor:'#ffffff'
+    },
+    logo: {
+        width: 250,
+        height: 250,
+        alignSelf: 'center',
+        marginBottom: 20,
     },
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
-        backgroundColor: 'rgba(255, 255, 255, 0.8)', // Cor de fundo semi-transparente
+        backgroundColor: '#ffffff',
         borderRadius: 10,
         marginHorizontal: 20,
     },

@@ -11,7 +11,7 @@ export default function Screen (){
     return(
         <SafeAreaView style={styles.container}>
             <Image
-                source={require('../assets/logo.png')}
+                source={require('../assets/logo1.png')}
                 style={styles.logo}
                 resizeMode="cover"
             />
@@ -28,12 +28,15 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor:'#ffffff',
+        
     },
     logo:{
         width: '90%',
         height: 400, 
-        marginBottom: 20
+        marginBottom:170
+
     },
     h1:{
         fontSize: 22,
