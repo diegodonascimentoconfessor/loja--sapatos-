@@ -1,58 +1,70 @@
-import { Pressable, Text, StyleSheet, Image,View } from "react-native";
+import { Pressable, Text, StyleSheet, Image, View, SafeAreaView } from "react-native";
 import { Category } from "../types/category"
 import { router } from "expo-router";
 
-type Props ={
+type Props = {
     data: Category;
 }
 
-export const CategoryItem = ({data}: Props) =>{
-    const click =() =>{
-
-        router.navigate(`/categories/${data.id}`)
+export const CategoryItem = ({ data }: Props) => {
+    const click = () => {
+        router.navigate(`/categories/${data.id}`);
     }
-    return(
-        <Pressable onPress={click} style={styles.container}>
-            <Image
-                source={{uri: data.cover}}
-                resizeMode="cover"
-                style={styles.image}
-            />
-            <View style={styles.bg}></View>
-            <View style={styles.box}>
-                <Text style={styles.title}>{data.title}</Text>
-            </View>
-        </Pressable>
+
+    return (
+        <SafeAreaView style={styles.safeArea}>
+            <Pressable onPress={click} style={styles.container}>
+                <Image
+                    source={{ uri: data.cover }}
+                    resizeMode="cover"
+                    style={styles.image}
+                />
+                <View style={styles.bg}></View>
+                <View style={styles.box}>
+                    <Text style={styles.title}>{data.title}</Text>
+                </View>
+            </Pressable>
+        </SafeAreaView>
     );
 }
+
 const styles = StyleSheet.create({
-    container:{
-       width:'90%',
-        margin: 10,
-        backgroundColor: "#333333",
-        borderRadius: 10
+    safeArea: {
+        flex: 1, 
+        paddingTop: 0, 
+        paddingBottom: 0,
+        backgroundColor: '#ffffff',
+        color:'#000A3E'
     },
-    image:{
-        width: '100%',
-        height: 150,
-        borderRadius: 10
-    },
-    bg:{
-        height: 150,
-        backgroundColor: "#000000",
-        opacity: 0.4,
+    container: {
+        width: '100%', 
+        height: 150,   
+        marginVertical: 10,
         borderRadius: 10,
-        marginTop: -150
+        overflow: 'hidden', 
+        position: 'relative' 
     },
-    box:{
-     
-        height: 150,
-        marginTop: -150,
+    image: {
+        width: '100%',
+        height: '100%',
+    },
+    bg: {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        backgroundColor: "#000A3E",
+        opacity: 0.3,
+        borderRadius: 10,
+    },
+    box: {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
-    title:{
+    title: {
         color: '#FFFFFF',
-        fontSize: 24
+        fontSize: 24,
     }
-})
+});

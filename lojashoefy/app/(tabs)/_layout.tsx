@@ -6,10 +6,11 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: '#0D0D0D', // Define a cor da barra
+          backgroundColor: '#000A3C', // Define a cor da barra
         },
-        tabBarActiveTintColor: '#3F89C6', // Cor dos ícones ativos
-        tabBarInactiveTintColor: '#888888', // Cor dos ícones inativos
+        tabBarActiveTintColor: '#000A3C', // Cor dos ícones e títulos ativos (branca)
+        tabBarActiveBackgroundColor:'#ffffff',
+        tabBarInactiveTintColor: '#ffffff', // Cor dos ícones e títulos inativos
       }}
     >
       <Tabs.Screen 

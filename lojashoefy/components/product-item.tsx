@@ -44,16 +44,18 @@ const styles = StyleSheet.create({
     title:{
         fontSize: 16,
         fontWeight: 'bold',
-        marginBottom: 10
+        marginBottom: 10,
+        color:'#000A3E'
     },
     description:{
         fontSize: 13,
-        color: "#555555",
+        color: '#000A3E',
         marginBottom: 10
     },
     price:{
         fontSize: 14,
         fontWeight: 'bold',
-        textAlign: 'right'
+        textAlign: 'right',
+        color:'#3B83BE'
     }
 })
