@@ -34,6 +34,30 @@ const styles = StyleSheet.create({
     list:{
         flex: 1,
         width: '100%',
+        height:300,
         padding: 20
-    }
-})
+    },
+
+
+   
+    title: {
+        
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#fff',
+        marginTop:20
+    },
+    subtitle: {
+        fontSize: 16,
+        color: '#fff' 
+    },
+   
+
+    });
+    
+
+
+
+
+
+
