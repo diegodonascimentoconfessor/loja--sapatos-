@@ -12,7 +12,7 @@ export default function Screen() {
     if (!product) return router.back;
 
     const comprar = () => {
-        alert("você clicou no item " + product.title);
+        alert("Você clicou no item " + product.title);
     };
 
     return (
@@ -34,7 +34,7 @@ export default function Screen() {
                 <Button
                     title="comprar agora"
                     onPress={comprar}
-                    style={styles.button} // Aplicar estilo personalizado
+                    
                 />
             </View>
         </SafeAreaView>
@@ -43,15 +43,23 @@ export default function Screen() {
 
 const styles = StyleSheet.create({
     container: {
+        width:'100%',
         flex: 1,
+        backgroundColor:'#ffffff'
+        
     },
     area: {
+        
         flex: 1,
+        width:'100%',
         padding: 10,
+        backgroundColor:'#fffffff'
+
     },
     buttonContainer: {
         padding: 10,
-        alignItems: 'center', // Centraliza o botão horizontalmente
+        alignItems: 'center', 
+        marginBottom:60
     },
     button: {
         width: 150, // Define a largura do botão
@@ -59,7 +67,8 @@ const styles = StyleSheet.create({
         borderRadius: 8, // Bordas arredondadas
         justifyContent: 'center', // Centraliza o texto verticalmente
         alignItems: 'center', // Centraliza o texto horizontalmente
-        backgroundColor: '#007bff', // Cor de fundo do botão
+        backgroundColor: '#007bff', 
+        marginBottom: 300
     },
     img: {
         width: "100%",
@@ -67,23 +76,34 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginBottom: 20,
     },
-    title: {
-        fontSize: 29,
+    title:{
+        fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 10,
+        color:'#000A3E',
+        textAlign:'center'
     },
-    description: {
-        fontSize: 15,
-        marginBottom: 20,
-        color: '#555555',
+    description:{
+        fontSize: 20,
+        color: '#000A3E',
+        marginBottom: 10,
+        textAlign:'center'
     },
     priceArea: {
+        width: '60%',
         padding: 10,
         borderRadius: 10,
-        backgroundColor: '#cccccc',
+        backgroundColor: '#ffff',
+        alignItems: 'center',
+        justifyContent: 'center', // Centraliza o conteúdo verticalmente
+        alignSelf: 'center' // Centraliza a área no meio da tela
     },
-    price: {
-        fontSize: 20,
+    
+    price:{
+        fontSize: 14,
+        fontWeight: 'bold',
         textAlign: 'center',
-    },
+        color:'#3B83BE'
+    }
+
 });

@@ -2,33 +2,27 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet, SafeAreaView, Image } from 'react-native';
 import { useRouter } from 'expo-router'; // Importe useRouter para navegação
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
     const router = useRouter();
-    const [isLogin, setIsLogin] = useState(true); 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
-    const handleLogin = () => {
-        console.log('Login:', username, password);
-        router.replace('/home');
-    };
-
     const handleRegister = () => {
         console.log('Register:', username, email, password);
-        router.replace('/cadastro'); 
+        router.replace('/home'); // Redireciona para a página principal após o registro
     };
 
     return (
         <SafeAreaView style={styles.safeArea}>
             <Image
-                source={require('../../assets/logo1.png')}
+                source={require('../assets/logo1.png')}
                 style={styles.logo}
                 resizeMode="cover"
             />
             
             <View style={styles.container}>
-                <Text style={styles.title}>{isLogin ? 'Login' : 'Cadastro'}</Text>
+                <Text style={styles.title}>Cadastro</Text>
 
                 <TextInput
                     style={styles.input}
@@ -37,15 +31,13 @@ const LoginScreen = () => {
                     onChangeText={setUsername}
                 />
 
-                {!isLogin && (
-                    <TextInput
-                        style={styles.input}
-                        placeholder="E-mail"
-                        value={email}
-                        onChangeText={setEmail}
-                        keyboardType="email-address"
-                    />
-                )}
+                <TextInput
+                    style={styles.input}
+                    placeholder="E-mail"
+                    value={email}
+                    onChangeText={setEmail}
+                    keyboardType="email-address"
+                />
 
                 <TextInput
                     style={styles.input}
@@ -57,21 +49,17 @@ const LoginScreen = () => {
 
                 <Pressable
                     style={styles.submitButton}
-                    onPress={isLogin ? handleLogin : handleRegister}
+                    onPress={handleRegister}
                 >
-                    <Text style={styles.submitButtonText}>
-                        {isLogin ? 'Entrar' : 'Cadastrar'}
-                    </Text>
+                    <Text style={styles.submitButtonText}>Cadastrar</Text>
                 </Pressable>
 
                 <Pressable
                     style={styles.toggleButton}
-                    onPress={() => setIsLogin(!isLogin)}
+                    onPress={() => router.replace('/login')}
                 >
                     <Text style={styles.toggleButtonText}>
-                        {isLogin
-                            ? 'Não tem uma conta? Cadastre-se'
-                            : 'Já tem uma conta? Faça login'}
+                        Já tem uma conta? Faça login
                     </Text>
                 </Pressable>
             </View>
@@ -138,4 +126,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default LoginScreen;
+export default RegisterScreen;
