@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         
     },
     logo:{
-        width: '70%',
+        width: '100%',
         height: 400, 
         marginBottom:170
 
