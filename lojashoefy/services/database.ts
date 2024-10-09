@@ -1,3 +1,11 @@
+export interface Product {
+  id: number;
+  idCategory: number;
+  image: string;
+  title: string;
+  description: string;
+  price: number;
+}
 
 import SQLite from 'react-native-sqlite-storage';
 
@@ -24,6 +32,7 @@ export const createTable = () => {
         title TEXT NOT NULL,
         description TEXT,
         price REAL NOT NULL
+        
       );`,
       [],
       () => {
