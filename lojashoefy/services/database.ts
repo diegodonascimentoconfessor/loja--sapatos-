@@ -1,81 +1,77 @@
 
-
 import SQLite from 'react-native-sqlite-storage';
 
-const db = SQLite.openDatabase(
-    { name: 'products.db', location: 'default' },
-    () => {},
-    error => {
-        console.error('Error opening database:', error);
-    }
+const database = SQLite.openDatabase(
+  {
+    name: 'mydatabase.db',
+    location: 'default',
+  },
+  () => {
+    console.log('Database opened successfully');
+  },
+  error => {
+    console.error('Error opening database:', error);
+  }
 );
 
-export const initDatabase = () => {
-    db.transaction(tx => {
-        tx.executeSql(
-            `CREATE TABLE IF NOT EXISTS products (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                title TEXT NOT NULL,
-                description TEXT,
-                price REAL,
-                image TEXT
-            );`,
-            [],
-            () => { console.log('Table created successfully'); },
-            error => { console.error('Error creating table:', error); }
-        );
-    });
+export const createTable = () => {
+  database.transaction(tx => {
+    tx.executeSql(
+      `CREATE TABLE IF NOT EXISTS products (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        idCategory INTEGER NOT NULL,
+        image TEXT NOT NULL,
+        title TEXT NOT NULL,
+        description TEXT,
+        price REAL NOT NULL
+      );`,
+      [],
+      () => {
+        console.log('Table created successfully');
+      },
+      error => {
+        console.error('Error creating table:', error);
+      }
+    );
+  });
 };
 
-export const addProduct = (product: { title: string; description: string; price: number; image: string }) => {
-    db.transaction(tx => {
-        tx.executeSql(
-            'INSERT INTO products (title, description, price, image) VALUES (?, ?, ?, ?)',
-            [product.title, product.description, product.price, product.image],
-            () => { console.log('Product added successfully'); },
-            error => { console.error('Error adding product:', error); }
-        );
-    });
+export const insertProduct = (
+  idCategory: number,
+  image: string,
+  title: string,
+  description: string,
+  price: number
+) => {
+  database.transaction(tx => {
+    tx.executeSql(
+      'INSERT INTO products (idCategory, image, title, description, price) VALUES (?, ?, ?, ?, ?)',
+      [idCategory, image, title, description, price],
+      (_, result) => {
+        console.log('Product inserted successfully:', result);
+      },
+      error => {
+        console.error('Error inserting product:', error);
+      }
+    );
+  });
 };
 
-export const getProductById = (id: number) => {
-    return new Promise((resolve, reject) => {
-        db.transaction(tx => {
-            tx.executeSql(
-                'SELECT * FROM products WHERE id = ?',
-                [id],
-                (tx, results) => {
-                    if (results.rows.length > 0) {
-                        resolve(results.rows.item(0));
-                    } else {
-                        resolve(null);
-                    }
-                },
-                error => {
-                    reject(error);
-                }
-            );
-        });
-    });
-};
-
-export const getAllProducts = () => {
-    return new Promise((resolve, reject) => {
-        db.transaction(tx => {
-            tx.executeSql(
-                'SELECT * FROM products',
-                [],
-                (tx, results) => {
-                    const products = [];
-                    for (let i = 0; i < results.rows.length; i++) {
-                        products.push(results.rows.item(i));
-                    }
-                    resolve(products);
-                },
-                error => {
-                    reject(error);
-                }
-            );
-        });
-    });
+export const fetchProducts = (callback: (products: any[]) => void) => {
+  database.transaction(tx => {
+    tx.executeSql(
+      'SELECT * FROM products',
+      [],
+      (_, result) => {
+        const products = [];
+        for (let i = 0; i < result.rows.length; i++) {
+          products.push(result.rows.item(i));
+        }
+        callback(products);
+      },
+      error => {
+        console.error('Error fetching products:', error);
+      }
+    );
+  });
 };
