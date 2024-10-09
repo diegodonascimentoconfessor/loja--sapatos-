@@ -6,6 +6,9 @@ export interface Product {
   description: string;
   price: number;
 }
+export const initDatabase = () => {
+ 
+};
 
 import SQLite from 'react-native-sqlite-storage';
 

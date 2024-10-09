@@ -1,4 +1,4 @@
-// ProductForm.tsx
+
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, FlatList } from 'react-native';
 import { createTable, insertProduct, fetchProducts, Product} from '../services/database'; 
@@ -19,7 +19,7 @@ const ProductForm: React.FC = () => {
   const handleSubmit = () => {
     if (idCategory && image && title && description && price) {
       insertProduct(idCategory, image, title, description, price);
-      fetchProducts(setProducts); // Recarregar produtos após a inserção
+      fetchProducts(setProducts); 
     } else {
       alert('Por favor, preencha todos os campos.');
     }
