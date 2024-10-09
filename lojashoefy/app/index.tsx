@@ -31,12 +31,13 @@ export default function Screen() {
 
 const styles = StyleSheet.create({
     safeArea: {
-        flex:1,
+      width:'100%',
+      height:300,
         backgroundColor: '#ffffff',
     },
     container: {
       width:'90%',
-      height:400,
+      height:300,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -54,4 +55,5 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginBottom: 10,
     },
+    
 });
