@@ -27,30 +27,31 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#ffffff', 
     },
-    logo2: { // Nome correto do estilo para a imagem
-        width: '90%', 
+    logo2: { 
+        width: '70%', 
         height: 200, 
         borderRadius: 20, 
         marginTop: 60, 
         alignSelf: 'center', 
     },
     container: {
-        flex: 1,
+        width:'100%',
+        height:400,
         justifyContent: 'center',
         padding: 20, 
     },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 10,
-        marginTop: 20,
+        marginBottom: 30,
         textAlign: 'center', 
         color: '#000A3C', 
     },
     description: {
-        fontSize: 16,
+        fontSize: 11,
         textAlign: 'center',
         color: '#00093C', 
         fontWeight: 'bold', 
+        marginBottom:80,
     },
 });
