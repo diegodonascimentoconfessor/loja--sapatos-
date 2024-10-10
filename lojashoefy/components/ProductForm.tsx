@@ -1,7 +1,7 @@
-
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, FlatList } from 'react-native';
-import { createTable, insertProduct, fetchProducts, Product} from '../services/database'; 
+import { createTable, insertProduct, fetchProducts, Product } from '../services/database'; 
+import { useRouter } from 'expo-router'; // Importando useRouter
 
 const ProductForm: React.FC = () => {
   const [idCategory, setIdCategory] = useState<number>(0);
@@ -10,6 +10,8 @@ const ProductForm: React.FC = () => {
   const [description, setDescription] = useState<string>('');
   const [price, setPrice] = useState<number>(0);
   const [products, setProducts] = useState<Product[]>([]);
+
+  const router = useRouter(); // Inicializando o useRouter
 
   useEffect(() => {
     createTable(); 
@@ -20,6 +22,7 @@ const ProductForm: React.FC = () => {
     if (idCategory && image && title && description && price) {
       insertProduct(idCategory, image, title, description, price);
       fetchProducts(setProducts); 
+      router.push('/home'); // Navegando para a rota "home" após a inserção do produto
     } else {
       alert('Por favor, preencha todos os campos.');
     }

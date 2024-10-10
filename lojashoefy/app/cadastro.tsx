@@ -10,7 +10,7 @@ const RegisterScreen = () => {
 
     const handleRegister = () => {
         console.log('Register:', username, email, password);
-        router.replace('/home'); // Redireciona para a página principal após o registro
+        router.replace('/home'); 
     };
 
     return (
@@ -56,7 +56,7 @@ const RegisterScreen = () => {
 
                 <Pressable
                     style={styles.toggleButton}
-                    onPress={() => router.replace('/login')}
+                    onPress={() => router.replace('/home')}
                 >
                     <Text style={styles.toggleButtonText}>
                         Já tem uma conta? Faça login

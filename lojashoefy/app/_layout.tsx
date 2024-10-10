@@ -9,7 +9,8 @@ export default function RootLayout(){
             <Stack.Screen name="menu"/>
             <Stack.Screen name= "cadastro"/>
             <Stack.Screen name="ProductList"/>
-         
+            <Stack.Screen name="home"/>
+            <Stack.Screen name="cadastrarprodutos"/>
         </Stack>
     );
 }
