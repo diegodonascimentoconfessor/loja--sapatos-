@@ -1,116 +1,82 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Pressable, StyleSheet, SafeAreaView, Alert } from 'react-native';
-import { createTable, insertProduct } from '../services/database'; 
-import { useRouter } from 'expo-router'; 
+import React, { useState } from 'react';
+import { View, Text, TextInput, Pressable, Alert, StyleSheet } from 'react-native';
 
-const ProductRegisterScreen = () => {
-    const [idCategory, setIdCategory] = useState('');
-    const [image, setImage] = useState('');
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [price, setPrice] = useState('');
+interface Product {
+    idCategory: string;
+    image: string;
+    title: string;
+    description: string;
+    price: string;
+}
 
-    const router = useRouter(); 
-
-    useEffect(() => {
-        createTable(); 
-    }, []);
+export default function CadastrarProdutos() {
+    const [product, setProduct] = useState<Product>({
+        idCategory: '',
+        image: '',
+        title: '',
+        description: '',
+        price: '',
+    });
 
     const handleRegister = () => {
-        if (idCategory && image && title && price) {
-            
-            insertProduct(Number(idCategory), image, title, description, Number(price));
-            Alert.alert('Sucesso', 'Produto cadastrado com sucesso!', [
-                {
-                    text: 'OK',
-                    onPress: () => {
-                        router.replace('/ProductList'); 
-                    },
-                },
-            ]);
-            
-            setIdCategory('');
-            setImage('');
-            setTitle('');
-            setDescription('');
-            setPrice('');
+        if (product.idCategory && product.image && product.title && product.price) {
+            Alert.alert('Sucesso', 'Produto cadastrado com sucesso!');
+            // Limpar campos após cadastro
+            setProduct({
+                idCategory: '',
+                image: '',
+                title: '',
+                description: '',
+                price: '',
+            });
         } else {
-            Alert.alert('Erro', 'Por favor, preencha todos os campos obrigatórios.');
+            Alert.alert('Erro', 'Por favor, preencha todos os campos.');
         }
     };
 
     return (
-        <SafeAreaView style={styles.safeArea}>
-            <View style={styles.container}>
-                <Text style={styles.title}>Cadastro de Produto</Text>
-
-                <TextInput
-                    style={styles.input}
-                    placeholder="ID da Categoria"
-                    value={idCategory}
-                    onChangeText={setIdCategory}
-                    keyboardType="numeric"
-                />
-
-                <TextInput
-                    style={styles.input}
-                    placeholder="URL da Imagem"
-                    value={image}
-                    onChangeText={setImage}
-                />
-
-                <TextInput
-                    style={styles.input}
-                    placeholder="Título do Produto"
-                    value={title}
-                    onChangeText={setTitle}
-                />
-
-                <TextInput
-                    style={styles.input}
-                    placeholder="Descrição do Produto"
-                    value={description}
-                    onChangeText={setDescription}
-                />
-
-                <TextInput
-                    style={styles.input}
-                    placeholder="Preço"
-                    value={price}
-                    onChangeText={setPrice}
-                    keyboardType="numeric"
-                />
-
-                <Pressable
-                    style={styles.submitButton}
-                    onPress={handleRegister}
-                >
-                    <Text style={styles.submitButtonText}>Cadastrar Produto</Text>
-                </Pressable>
-            </View>
-        </SafeAreaView>
+        <View>
+            <Text>Cadastrar Produto</Text>
+            <TextInput
+                placeholder="ID Categoria"
+                value={product.idCategory}
+                onChangeText={(text) => setProduct({ ...product, idCategory: text })}
+                keyboardType="numeric"
+                style={styles.input}
+            />
+            <TextInput
+                placeholder="URL da Imagem"
+                value={product.image}
+                onChangeText={(text) => setProduct({ ...product, image: text })}
+                style={styles.input}
+            />
+            <TextInput
+                placeholder="Título do Produto"
+                value={product.title}
+                onChangeText={(text) => setProduct({ ...product, title: text })}
+                style={styles.input}
+            />
+            <TextInput
+                placeholder="Descrição"
+                value={product.description}
+                onChangeText={(text) => setProduct({ ...product, description: text })}
+                style={styles.input}
+            />
+            <TextInput
+                placeholder="Preço"
+                value={product.price}
+                onChangeText={(text) => setProduct({ ...product, price: text })}
+                keyboardType="numeric"
+                style={styles.input}
+            />
+            <Pressable onPress={handleRegister} style={styles.submitButton}>
+                <Text style={styles.submitButtonText}>Cadastrar Produto</Text>
+            </Pressable>
+        </View>
     );
-};
+}
 
 const styles = StyleSheet.create({
-    safeArea: {
-        flex: 1,
-        backgroundColor: '#ffffff',
-    },
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20,
-        backgroundColor: '#ffffff',
-        borderRadius: 10,
-        marginHorizontal: 20,
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 20,
-    },
     input: {
         width: '100%',
         height: 50,
@@ -136,5 +102,3 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
 });
-
-export default ProductRegisterScreen;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet, SafeAreaView, Image } from 'react-native';
-import { useRouter } from 'expo-router'; // Importe useRouter para navegação
+import { useRouter } from 'expo-router'; 
 
 const RegisterScreen = () => {
     const router = useRouter();
@@ -10,7 +10,7 @@ const RegisterScreen = () => {
 
     const handleRegister = () => {
         console.log('Register:', username, email, password);
-        router.replace('/home'); 
+        router.replace('/cadastrarprodutos'); 
     };
 
     return (
@@ -56,7 +56,7 @@ const RegisterScreen = () => {
 
                 <Pressable
                     style={styles.toggleButton}
-                    onPress={() => router.replace('/home')}
+                    onPress={() => router.replace('/cadastrarprodutos')}
                 >
                     <Text style={styles.toggleButtonText}>
                         Já tem uma conta? Faça login
