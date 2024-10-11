@@ -5,12 +5,13 @@ import { initDatabase } from './services/database';
 
 const App: React.FC = () => {
   useEffect(() => {
+    // Inicializa o banco de dados quando o app é carregado
     initDatabase();
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Text>Bem-vindo ao seu aplicativo!</Text>
       <StatusBar style="auto" />
     </View>
   );

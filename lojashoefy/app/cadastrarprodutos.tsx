@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Pressable, Alert, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Pressable, Alert, StyleSheet, SafeAreaView } from 'react-native';
 
 interface Product {
     idCategory: string;
@@ -9,7 +9,11 @@ interface Product {
     price: string;
 }
 
-export default function CadastrarProdutos() {
+interface Props {
+    navigation: any; 
+}
+
+export default function CadastrarProdutos({ navigation }: Props) {
     const [product, setProduct] = useState<Product>({
         idCategory: '',
         image: '',
@@ -19,8 +23,13 @@ export default function CadastrarProdutos() {
     });
 
     const handleRegister = () => {
+        // Verifica se todos os campos obrigatórios estão preenchidos
         if (product.idCategory && product.image && product.title && product.price) {
             Alert.alert('Sucesso', 'Produto cadastrado com sucesso!');
+
+            // Navegar para outra tela após o cadastro
+            navigation.navigate('OutroScreen'); // Altere para o nome da tela desejada
+
             // Limpar campos após cadastro
             setProduct({
                 idCategory: '',
@@ -35,48 +44,65 @@ export default function CadastrarProdutos() {
     };
 
     return (
-        <View>
-            <Text>Cadastrar Produto</Text>
-            <TextInput
-                placeholder="ID Categoria"
-                value={product.idCategory}
-                onChangeText={(text) => setProduct({ ...product, idCategory: text })}
-                keyboardType="numeric"
-                style={styles.input}
-            />
-            <TextInput
-                placeholder="URL da Imagem"
-                value={product.image}
-                onChangeText={(text) => setProduct({ ...product, image: text })}
-                style={styles.input}
-            />
-            <TextInput
-                placeholder="Título do Produto"
-                value={product.title}
-                onChangeText={(text) => setProduct({ ...product, title: text })}
-                style={styles.input}
-            />
-            <TextInput
-                placeholder="Descrição"
-                value={product.description}
-                onChangeText={(text) => setProduct({ ...product, description: text })}
-                style={styles.input}
-            />
-            <TextInput
-                placeholder="Preço"
-                value={product.price}
-                onChangeText={(text) => setProduct({ ...product, price: text })}
-                keyboardType="numeric"
-                style={styles.input}
-            />
-            <Pressable onPress={handleRegister} style={styles.submitButton}>
-                <Text style={styles.submitButtonText}>Cadastrar Produto</Text>
-            </Pressable>
-        </View>
+        <SafeAreaView style={styles.safeArea}>
+            <View style={styles.container}>
+                <Text style={styles.title}>Cadastrar Produto</Text>
+                <TextInput
+                    placeholder="ID Categoria"
+                    value={product.idCategory}
+                    onChangeText={(text) => setProduct({ ...product, idCategory: text })}
+                    keyboardType="numeric"
+                    style={styles.input}
+                />
+                <TextInput
+                    placeholder="URL da Imagem"
+                    value={product.image}
+                    onChangeText={(text) => setProduct({ ...product, image: text })}
+                    style={styles.input}
+                />
+                <TextInput
+                    placeholder="Título do Produto"
+                    value={product.title}
+                    onChangeText={(text) => setProduct({ ...product, title: text })}
+                    style={styles.input}
+                />
+                <TextInput
+                    placeholder="Descrição"
+                    value={product.description}
+                    onChangeText={(text) => setProduct({ ...product, description: text })}
+                    style={styles.input}
+                />
+                <TextInput
+                    placeholder="Preço"
+                    value={product.price}
+                    onChangeText={(text) => setProduct({ ...product, price: text })}
+                    keyboardType="numeric"
+                    style={styles.input}
+                />
+                <Pressable onPress={handleRegister} style={styles.submitButton}>
+                    <Text style={styles.submitButtonText}>Cadastrar Produto</Text>
+                </Pressable>
+            </View>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
+    safeArea: {
+        flex: 1,
+        padding: 20,
+        backgroundColor: '#F8F8F8',
+    },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 20,
+        textAlign: 'center',
+    },
     input: {
         width: '100%',
         height: 50,

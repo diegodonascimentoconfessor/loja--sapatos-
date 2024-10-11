@@ -1,5 +1,4 @@
 import { data } from "../data";
-import { Database } from "sqlite";
 //pega todos os produtos
 export const getAllProducts = () =>{
     return data.products;
