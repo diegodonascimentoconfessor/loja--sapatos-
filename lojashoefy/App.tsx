@@ -5,7 +5,6 @@ import { initDatabase } from './services/database';
 
 const App: React.FC = () => {
   useEffect(() => {
-    // Inicializa o banco de dados quando o app é carregado
     initDatabase();
   }, []);
 

@@ -4,8 +4,8 @@ export default function Screen() {
     return (
         <SafeAreaView style={styles.safeArea}>
             <Image
-                source={require('../../assets/logo2.png')} // Verifique o caminho correto da imagem
-                style={styles.logo2} // Aqui o estilo deve ser logo2
+                source={require('../../assets/logo2.png')} 
+                style={styles.logo2} 
                 resizeMode="cover"
             />
             <View style={styles.container}>

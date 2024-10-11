@@ -46,12 +46,12 @@ export const createTable = () => {
   });
 };
 
-// Função para inicializar o banco de dados
+
 export const initDatabase = () => {
-  createTable(); // Chama a função para criar a tabela
+  createTable(); 
 };
 
-// Função para inserir um produto na tabela "products"
+
 export const insertProduct = (
   idCategory: number,
   image: string,

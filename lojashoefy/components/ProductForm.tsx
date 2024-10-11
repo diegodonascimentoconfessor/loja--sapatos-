@@ -11,8 +11,7 @@ const ProductForm: React.FC = () => {
   const [price, setPrice] = useState<number>(0);
   const [products, setProducts] = useState<Product[]>([]);
 
-  const router = useRouter(); // Inicializando o useRouter
-
+  const router = useRouter(); 
   useEffect(() => {
     createTable(); 
     fetchProducts(setProducts); 
@@ -22,7 +21,7 @@ const ProductForm: React.FC = () => {
     if (idCategory && image && title && description && price) {
       insertProduct(idCategory, image, title, description, price);
       fetchProducts(setProducts); 
-      router.push('/home'); // Navegando para a rota "home" após a inserção do produto
+      router.push('/home'); 
     } else {
       alert('Por favor, preencha todos os campos.');
     }
