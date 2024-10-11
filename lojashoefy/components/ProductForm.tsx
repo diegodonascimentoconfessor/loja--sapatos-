@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, FlatList } from 'react-native';
 import { createTable, insertProduct, fetchProducts, Product } from '../services/database'; 
-import { useRouter } from 'expo-router'; // Importando useRouter
+import { useRouter } from 'expo-router';
 
 const ProductForm: React.FC = () => {
   const [idCategory, setIdCategory] = useState<number>(0);

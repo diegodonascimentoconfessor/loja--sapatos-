@@ -1,3 +1,5 @@
+import SQLite from 'react-native-sqlite-storage';
+
 export interface Product {
   id: number;
   idCategory: number;
@@ -6,12 +8,8 @@ export interface Product {
   description: string;
   price: number;
 }
-export const initDatabase = () => {
- 
-};
 
-import SQLite from 'react-native-sqlite-storage';
-
+// Inicializa o banco de dados
 const database = SQLite.openDatabase(
   {
     name: 'mydatabase.db',
@@ -25,6 +23,7 @@ const database = SQLite.openDatabase(
   }
 );
 
+// Função para criar a tabela "products"
 export const createTable = () => {
   database.transaction(tx => {
     tx.executeSql(
@@ -35,7 +34,6 @@ export const createTable = () => {
         title TEXT NOT NULL,
         description TEXT,
         price REAL NOT NULL
-        
       );`,
       [],
       () => {
@@ -48,6 +46,12 @@ export const createTable = () => {
   });
 };
 
+// Função para inicializar o banco de dados
+export const initDatabase = () => {
+  createTable(); // Chama a função para criar a tabela
+};
+
+// Função para inserir um produto na tabela "products"
 export const insertProduct = (
   idCategory: number,
   image: string,
@@ -69,13 +73,14 @@ export const insertProduct = (
   });
 };
 
+// Função para buscar todos os produtos da tabela "products"
 export const fetchProducts = (callback: (products: any[]) => void) => {
   database.transaction(tx => {
     tx.executeSql(
       'SELECT * FROM products',
       [],
       (_, result) => {
-        const products = [];
+        const products: Product[] = [];
         for (let i = 0; i < result.rows.length; i++) {
           products.push(result.rows.item(i));
         }

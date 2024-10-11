@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Pressable, Alert, StyleSheet, SafeAreaView } from 'react-native';
+import { useRouter } from 'expo-router';
+
 
 interface Product {
     idCategory: string;
@@ -9,11 +11,8 @@ interface Product {
     price: string;
 }
 
-interface Props {
-    navigation: any; 
-}
-
-export default function CadastrarProdutos({ navigation }: Props) {
+export default function CadastrarProdutos() {
+    const router = useRouter(); // Use the router hook
     const [product, setProduct] = useState<Product>({
         idCategory: '',
         image: '',
@@ -23,14 +22,14 @@ export default function CadastrarProdutos({ navigation }: Props) {
     });
 
     const handleRegister = () => {
-        // Verifica se todos os campos obrigatórios estão preenchidos
+        // Check if all required fields are filled
         if (product.idCategory && product.image && product.title && product.price) {
             Alert.alert('Sucesso', 'Produto cadastrado com sucesso!');
 
-            // Navegar para outra tela após o cadastro
-            navigation.navigate('OutroScreen'); // Altere para o nome da tela desejada
+            // Navigate to another screen after registration
+            router.push('/index'); // Adjust to your screen path
 
-            // Limpar campos após cadastro
+            // Clear fields after registration
             setProduct({
                 idCategory: '',
                 image: '',
