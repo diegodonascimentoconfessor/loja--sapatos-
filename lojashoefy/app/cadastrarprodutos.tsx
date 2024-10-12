@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Pressable, Alert, StyleSheet, SafeAreaView, FlatList } from 'react-native';
-import { useRouter } from 'expo-router';  
-import { SQLiteDatabase, SQLiteProvider, useSQLiteContext } from 'expo-sqlite'; 
+import { View, Text, TextInput, Pressable, Alert, StyleSheet, SafeAreaView, FlatList, Image } from 'react-native';
+import { useRouter } from 'expo-router';
+import { SQLiteDatabase, SQLiteProvider, useSQLiteContext } from 'expo-sqlite';
 
 interface Product {
-  id: number; 
+  id: number;
   idCategory: string;
   image: string;
   title: string;
@@ -33,10 +33,9 @@ function CadastrarProdutos() {
     description: '',
     price: '',
   });
-  
-  const [productsList, setProductsList] = useState<Product[]>([]); // Lista de produtos
 
-  // Carregar produtos ao montar o componente
+  const [productsList, setProductsList] = useState<Product[]>([]);
+
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -49,12 +48,12 @@ function CadastrarProdutos() {
           [product.idCategory, product.image, product.title, product.description, product.price]
         );
 
-        console.log('Produto cadastrado:', product); // Log de confirmação da inserção
-        await fetchProducts(); // Fetch the products to log them
+        console.log('Produto cadastrado:', product);
+        await fetchProducts(); // Atualiza a lista de produtos após o cadastro
         Alert.alert('Sucesso', 'Produto cadastrado com sucesso!');
-        router.replace('/cadastrarprodutos'); 
+        router.replace('/cadastrarprodutos');
 
-        // Limpar os campos do formulário
+        // Limpa os campos do formulário
         setProduct({
           id: 0,
           idCategory: '',
@@ -72,11 +71,10 @@ function CadastrarProdutos() {
     }
   };
 
-  // Função para buscar e listar produtos
   const fetchProducts = async () => {
     try {
-      const result = await db.getAllAsync('SELECT * FROM products'); // Obtem todos os produtos
-      setProductsList(result as Product[]); // Atualiza a lista de produtos com tipo correto
+      const result = await db.getAllAsync('SELECT * FROM products');
+      setProductsList(result as Product[]);
     } catch (error) {
       console.error('Erro ao buscar produtos', error);
     }
@@ -121,15 +119,22 @@ function CadastrarProdutos() {
         <Text style={styles.submitButtonText}>Cadastrar Produto</Text>
       </Pressable>
 
-      {/* Exibir lista de produtos */}
+      {/* Exibe a lista de produtos cadastrados */}
       <FlatList
         data={productsList}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <View style={styles.productItem}>
-            <Text style={styles.productTitle}>{item.title}</Text>
+            <Text style={styles.productCategory}>Categoria: {item.idCategory}</Text>
+            <Text style={styles.productTitle}>Título: {item.title}</Text>
             <Text style={styles.productDescription}>{item.description}</Text>
             <Text style={styles.productPrice}>Preço: R$ {item.price}</Text>
+            {/* Exibe a imagem se houver uma URL */}
+            {item.image ? (
+              <Image source={{ uri: item.image }} style={styles.productImage} />
+            ) : (
+              <Text>Sem imagem disponível</Text>
+            )}
           </View>
         )}
       />
@@ -211,6 +216,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#CCC',
   },
+  productCategory: {
+    fontSize: 16,
+    color: '#666',
+    fontWeight: 'bold',
+  },
   productTitle: {
     fontSize: 18,
     fontWeight: 'bold',
@@ -222,5 +232,11 @@ const styles = StyleSheet.create({
   productPrice: {
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  productImage: {
+    width: 100,
+    height: 100,
+    marginTop: 10,
+    marginBottom: 10,
   },
 });
