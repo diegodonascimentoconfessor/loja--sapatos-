@@ -52,7 +52,7 @@ function CadastrarProdutos() {
         console.log('Produto cadastrado:', product); // Log de confirmação da inserção
         await fetchProducts(); // Fetch the products to log them
         Alert.alert('Sucesso', 'Produto cadastrado com sucesso!');
-        router.push('index');
+        router.replace('/cadastrarprodutos'); 
 
         // Limpar os campos do formulário
         setProduct({
