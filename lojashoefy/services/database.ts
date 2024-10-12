@@ -1,94 +1,39 @@
-import SQLite from 'react-native-sqlite-storage';
+import { SQLiteDatabase } from "expo-sqlite";
 
-export interface Product {
-  id: number;
-  idCategory: number;
-  image: string;
-  title: string;
-  description: string;
-  price: number;
-}
+async function migrateDbIfNeeded(db: SQLiteDatabase) {
+  const DATABASE_VERSION = 1;
 
-// Inicializa o banco de dados
-const database = SQLite.openDatabase(
-  {
-    name: 'mydatabase.db',
-    location: 'default',
-  },
-  () => {
-    console.log('Database opened successfully');
-  },
-  error => {
-    console.error('Error opening database:', error);
+  try {
+    const result = await db.getFirstAsync<{ user_version: number }>(
+      'PRAGMA user_version'
+    );
+
+    // Verifique se a consulta retornou um resultado
+    const currentDbVersion = result ? result.user_version : 0;
+
+    // Se a versão do banco de dados for igual ou superior, não faça nada
+    if (currentDbVersion >= DATABASE_VERSION) {
+      return;
+    }
+
+    // Iniciar a migração se a versão atual for 0
+    if (currentDbVersion === 0) {
+      await db.execAsync(`
+        PRAGMA journal_mode = 'wal';
+        CREATE TABLE IF NOT EXISTS products (
+          id INTEGER PRIMARY KEY NOT NULL,
+          idCategory TEXT NOT NULL,
+          image TEXT NOT NULL,
+          title TEXT NOT NULL,
+          description TEXT,
+          price TEXT NOT NULL
+        );
+      `);
+      // Atualizar a versão do banco de dados
+      await db.execAsync(`PRAGMA user_version = ${DATABASE_VERSION}`);
+    }
+  } catch (error) {
+    console.error('Erro ao migrar o banco de dados:', error);
+    throw error; // Lançar o erro para que possa ser tratado onde a função é chamada
   }
-);
-
-// Função para criar a tabela "products"
-export const createTable = () => {
-  database.transaction(tx => {
-    tx.executeSql(
-      `CREATE TABLE IF NOT EXISTS products (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        idCategory INTEGER NOT NULL,
-        image TEXT NOT NULL,
-        title TEXT NOT NULL,
-        description TEXT,
-        price REAL NOT NULL
-      );`,
-      [],
-      () => {
-        console.log('Table created successfully');
-      },
-      error => {
-        console.error('Error creating table:', error);
-      }
-    );
-  });
-};
-
-
-export const initDatabase = () => {
-  createTable(); 
-};
-
-
-export const insertProduct = (
-  idCategory: number,
-  image: string,
-  title: string,
-  description: string,
-  price: number
-) => {
-  database.transaction(tx => {
-    tx.executeSql(
-      'INSERT INTO products (idCategory, image, title, description, price) VALUES (?, ?, ?, ?, ?)',
-      [idCategory, image, title, description, price],
-      (_, result) => {
-        console.log('Product inserted successfully:', result);
-      },
-      error => {
-        console.error('Error inserting product:', error);
-      }
-    );
-  });
-};
-
-// Função para buscar todos os produtos da tabela "products"
-export const fetchProducts = (callback: (products: any[]) => void) => {
-  database.transaction(tx => {
-    tx.executeSql(
-      'SELECT * FROM products',
-      [],
-      (_, result) => {
-        const products: Product[] = [];
-        for (let i = 0; i < result.rows.length; i++) {
-          products.push(result.rows.item(i));
-        }
-        callback(products);
-      },
-      error => {
-        console.error('Error fetching products:', error);
-      }
-    );
-  });
-};
+}

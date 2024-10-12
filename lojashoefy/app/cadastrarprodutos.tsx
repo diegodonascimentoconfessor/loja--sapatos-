@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Pressable, Alert, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, TextInput, Pressable, Alert, StyleSheet, SafeAreaView, FlatList } from 'react-native';
 import { useRouter } from 'expo-router';  
-import { useSQLiteContext, SQLiteProvider } from 'expo-sqlite';
+import { SQLiteDatabase, SQLiteProvider, useSQLiteContext } from 'expo-sqlite'; 
 
 interface Product {
+  id: number; 
   idCategory: string;
   image: string;
   title: string;
@@ -25,27 +26,37 @@ function CadastrarProdutos() {
   const router = useRouter();
   const db = useSQLiteContext();
   const [product, setProduct] = useState<Product>({
+    id: 0,
     idCategory: '',
     image: '',
     title: '',
     description: '',
     price: '',
   });
+  
+  const [productsList, setProductsList] = useState<Product[]>([]); // Lista de produtos
+
+  // Carregar produtos ao montar o componente
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const handleRegister = async () => {
     if (product.idCategory && product.image && product.title && product.price) {
       try {
-        
         await db.runAsync(
           'INSERT INTO products (idCategory, image, title, description, price) VALUES (?, ?, ?, ?, ?)',
           [product.idCategory, product.image, product.title, product.description, product.price]
         );
-        
+
+        console.log('Produto cadastrado:', product); // Log de confirmação da inserção
+        await fetchProducts(); // Fetch the products to log them
         Alert.alert('Sucesso', 'Produto cadastrado com sucesso!');
         router.push('index');
 
         // Limpar os campos do formulário
         setProduct({
+          id: 0,
           idCategory: '',
           image: '',
           title: '',
@@ -58,6 +69,16 @@ function CadastrarProdutos() {
       }
     } else {
       Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+    }
+  };
+
+  // Função para buscar e listar produtos
+  const fetchProducts = async () => {
+    try {
+      const result = await db.getAllAsync('SELECT * FROM products'); // Obtem todos os produtos
+      setProductsList(result as Product[]); // Atualiza a lista de produtos com tipo correto
+    } catch (error) {
+      console.error('Erro ao buscar produtos', error);
     }
   };
 
@@ -99,6 +120,19 @@ function CadastrarProdutos() {
       <Pressable onPress={handleRegister} style={styles.submitButton}>
         <Text style={styles.submitButtonText}>Cadastrar Produto</Text>
       </Pressable>
+
+      {/* Exibir lista de produtos */}
+      <FlatList
+        data={productsList}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.productItem}>
+            <Text style={styles.productTitle}>{item.title}</Text>
+            <Text style={styles.productDescription}>{item.description}</Text>
+            <Text style={styles.productPrice}>Preço: R$ {item.price}</Text>
+          </View>
+        )}
+      />
     </View>
   );
 }
@@ -106,17 +140,19 @@ function CadastrarProdutos() {
 // Função de migração do banco de dados
 async function migrateDbIfNeeded(db: SQLiteDatabase) {
   const DATABASE_VERSION = 1;
-  let { user_version: currentDbVersion } = await db.getFirstAsync<{ user_version: number }>(
-    'PRAGMA user_version'
-  );
+
+  const result = await db.getFirstAsync<{ user_version: number }>('PRAGMA user_version');
+  const currentDbVersion = result ? result.user_version : 0;
+
   if (currentDbVersion >= DATABASE_VERSION) {
     return;
   }
+
   if (currentDbVersion === 0) {
+    await db.execAsync(`PRAGMA journal_mode = 'wal';`);
     await db.execAsync(`
-      PRAGMA journal_mode = 'wal';
-      CREATE TABLE products (
-        id INTEGER PRIMARY KEY NOT NULL,
+      CREATE TABLE IF NOT EXISTS products (
+        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         idCategory TEXT NOT NULL,
         image TEXT NOT NULL,
         title TEXT NOT NULL,
@@ -124,8 +160,9 @@ async function migrateDbIfNeeded(db: SQLiteDatabase) {
         price TEXT NOT NULL
       );
     `);
-    currentDbVersion = 1;
+    console.log("Tabela 'products' criada com sucesso.");
   }
+
   await db.execAsync(`PRAGMA user_version = ${DATABASE_VERSION}`);
 }
 
@@ -168,5 +205,22 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  productItem: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#CCC',
+  },
+  productTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  productDescription: {
+    fontSize: 14,
+    color: '#666',
+  },
+  productPrice: {
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
