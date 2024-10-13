@@ -8,7 +8,7 @@
     "userInterfaceStyle": "light",
     "scheme": "your-app-scheme",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/logo1.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,7 +17,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo1.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.diego0825.lojashoefy"
