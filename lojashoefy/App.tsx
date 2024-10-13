@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import React, { useEffect } from 'react';
-import { initDatabase } from './services/database';
+//import { initDatabase } from './services/database';
 
 const App: React.FC = () => {
   useEffect(() => {
-    initDatabase();
+   // initDatabase();
   }, []);
 
   return (
