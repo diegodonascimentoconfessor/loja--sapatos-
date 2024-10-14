@@ -8,10 +8,9 @@ async function migrateDbIfNeeded(db: SQLiteDatabase) {
       'PRAGMA user_version'
     );
 
-    // Verifique se a consulta retornou um resultado
     const currentDbVersion = result ? result.user_version : 0;
 
-    // Se a versão do banco de dados for igual ou superior, não faça nada
+  
     if (currentDbVersion >= DATABASE_VERSION) {
       return;
     }
