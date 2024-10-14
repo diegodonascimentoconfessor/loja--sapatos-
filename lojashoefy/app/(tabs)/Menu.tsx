@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet, SafeAreaView, Image } from 'react-native';
-import { useRouter } from 'expo-router'; // Importe useRouter para navegação
+import { useRouter } from 'expo-router'; 
 
 const LoginScreen = () => {
     const router = useRouter();
