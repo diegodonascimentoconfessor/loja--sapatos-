@@ -46,7 +46,14 @@ function CadastrarUsuarios() {
 
         console.log('Usuário cadastrado:', { ...user });
         await fetchUsers(); // Atualiza a lista de usuários após o cadastro
-        Alert.alert('Sucesso', 'Usuário cadastrado com sucesso!');
+        Alert.alert('Sucesso', 'Usuário cadastrado com sucesso!', [
+          {
+            text: 'OK',
+            onPress: () => {
+              router.replace('/home'); // Redireciona para a página /home
+            },
+          },
+        ]);
 
         // Limpa os campos do formulário
         setUser({
@@ -135,7 +142,7 @@ async function migrateDbIfNeeded(db: SQLiteDatabase) {
       CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         name TEXT NOT NULL,
-        email TEXT NOT NULL,   n
+        email TEXT NOT NULL,
         password TEXT NOT NULL
       );
     `);

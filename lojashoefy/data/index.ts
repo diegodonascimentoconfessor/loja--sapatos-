@@ -25,7 +25,7 @@ export const data: Data = {
         },
         {
             id: 4,
-            title: 'Sapatos Infantis',
+            title: 'Sandálias Infantis',
             cover: 'https://cdn.dooca.store/154615/products/10na001-242-amarelo-4-2_1600x1600+fill_ffffff.jpg?v=1723140978'
         },
         {
