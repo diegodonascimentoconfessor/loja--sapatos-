@@ -20,6 +20,13 @@ async function migrateDbIfNeeded(db: SQLiteDatabase) {
     if (currentDbVersion === 0) {
       await db.execAsync(`
         PRAGMA journal_mode = 'wal';
+
+        CREATE TABLE IF NOT EXISTS users (
+          username TEXT NOT NULL UNIQUE,
+          email TEXT NOT NULL UNIQUE,
+          password TEXT NOT NULL
+        );
+
         CREATE TABLE IF NOT EXISTS products (
           id INTEGER PRIMARY KEY NOT NULL,
           idCategory TEXT NOT NULL,
