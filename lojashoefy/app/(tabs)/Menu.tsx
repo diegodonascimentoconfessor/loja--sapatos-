@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   submitButton: {
-    backgroundColor: '#005999',
+    backgroundColor: '#000A3C',
     borderRadius: 8,
     paddingVertical: 15,
     paddingHorizontal: 40,

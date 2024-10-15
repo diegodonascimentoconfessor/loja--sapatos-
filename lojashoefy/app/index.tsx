@@ -28,14 +28,12 @@ export default function Screen() {
                 resizeMode="cover"
             />
 
-           
-
             <Text style={styles.h1}>Loja-Shoefy</Text>
             <Text style={styles.h2}>Qualidade e Conforto.</Text>
-            <Button
-                title="Compre Agora"
-                onPress={start}
-            />
+
+            <Pressable onPress={start} style={styles.button}>
+                <Text style={styles.buttonText}>Compre Agora</Text>
+            </Pressable>
         </SafeAreaView>
     );
 }
@@ -48,25 +46,39 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
     },
     adminLink: {
-        marginTop: 20,  // Espaço entre a imagem e o link
+        marginTop: 20,  
     },
     adminText: {
         fontSize: 16,
-        color: '#000A3E',  // Cor do link
+        color: '#000A3E',  
         textDecorationLine: 'underline',
     },
     logo: {
         width: '100%',
         height: 400,
-        marginBottom: 20  // Ajuste do espaçamento entre a imagem e o restante do conteúdo
+        marginBottom: 20,
     },
     h1: {
         fontSize: 22,
         fontWeight: 'bold',
-        marginBottom: 10
+        marginBottom: 10,
     },
     h2: {
         fontSize: 16,
-        marginBottom: 10
+        marginBottom: 10,
+    },
+    button: {
+        backgroundColor: '#000A3C',  // Cor de fundo do botão
+        paddingVertical: 15,  // Espaçamento vertical
+        paddingHorizontal: 30,  // Espaçamento horizontal
+        borderRadius: 10,  // Bordas arredondadas
+        alignItems: 'center',  // Centraliza o texto
+        justifyContent: 'center',  // Centraliza verticalmente
+        marginTop: 20,  // Espaçamento entre o texto e o botão
+    },
+    buttonText: {
+        color: '#ffffff',  // Cor do texto
+        fontSize: 18,  // Tamanho da fonte
+        fontWeight: 'bold',  // Deixa o texto em negrito
     }
 });
