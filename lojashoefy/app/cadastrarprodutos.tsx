@@ -51,7 +51,7 @@ function CadastrarProdutos() {
         console.log('Produto cadastrado:', product);
         await fetchProducts(); // Atualiza a lista de produtos após o cadastro
         Alert.alert('Sucesso', 'Produto cadastrado com sucesso!');
-        router.replace('/cadastrarprodutos');
+        router.replace('/home');
 
         // Limpa os campos do formulário
         setProduct({
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   submitButton: {
-    backgroundColor: '#005999',
+    backgroundColor: '#000A3C',
     borderRadius: 8,
     paddingVertical: 15,
     paddingHorizontal: 40,
