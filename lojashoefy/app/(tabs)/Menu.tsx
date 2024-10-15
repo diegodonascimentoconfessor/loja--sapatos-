@@ -1,141 +1,188 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Pressable, StyleSheet, SafeAreaView, Image } from 'react-native';
-import { useRouter } from 'expo-router'; 
+import { View, Text, TextInput, Pressable, Alert, StyleSheet, SafeAreaView, Image } from 'react-native';
+import { useRouter } from 'expo-router';
+import { SQLiteDatabase, SQLiteProvider, useSQLiteContext } from 'expo-sqlite';
 
-const LoginScreen = () => {
-    const router = useRouter();
-    const [isLogin, setIsLogin] = useState(true); 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+}
 
-    const handleLogin = () => {
-        console.log('Login:', username, password);
-        router.replace('/home');
-    };
+export default function App() {
+  return (
+    <SQLiteProvider databaseName="users.db" onInit={migrateDbIfNeeded}>
+      <SafeAreaView style={styles.safeArea}>
+        <Login />
+      </SafeAreaView>
+    </SQLiteProvider>
+  );
+}
 
-    const handleRegister = () => {
-        console.log('Register:', username, email, password);
-        router.replace('/cadastro'); 
-    };
+function Login() {
+  const router = useRouter();
+  const db = useSQLiteContext();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false); // Estado para mostrar/ocultar a senha
 
-    return (
-        <SafeAreaView style={styles.safeArea}>
-            <Image
-                source={require('../../assets/logo1.png')}
-                style={styles.logo}
-                resizeMode="cover"
-            />
-            
-            <View style={styles.container}>
-                <Text style={styles.title}>{isLogin ? 'Login' : 'Cadastro'}</Text>
+  const handleLogin = async () => {
+    if (email && password) {
+      try {
+        const result = await db.getAllSync(
+          'SELECT * FROM users WHERE email = ? AND password = ?',
+          [email, password]
+        );
 
-                <TextInput
-                    style={styles.input}
-                    placeholder="Usuário"
-                    value={username}
-                    onChangeText={setUsername}
-                />
+        if (result.length > 0) { // Verifica se há resultados
+          console.log('Usuário logado:', result);
+          Alert.alert('Sucesso', 'Login realizado com sucesso!', [
+            {
+              text: 'OK',
+              onPress: () => {
+                router.replace('/home'); // Redireciona para a página /home
+              },
+            },
+          ]);
+        } else {
+          Alert.alert('Erro', 'Email ou senha incorretos.');
+        }
+      } catch (error) {
+        console.error('Erro ao verificar o usuário no banco de dados', error);
+        Alert.alert('Erro', 'Não foi possível realizar o login.');
+      }
+    } else {
+      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+    }
+  };
 
-                {!isLogin && (
-                    <TextInput
-                        style={styles.input}
-                        placeholder="E-mail"
-                        value={email}
-                        onChangeText={setEmail}
-                        keyboardType="email-address"
-                    />
-                )}
+  const handleSignUpRedirect = () => {
+    router.push('/cadastro'); // Redireciona para a página de cadastro
+  };
 
-                <TextInput
-                    style={styles.input}
-                    placeholder="Senha"
-                    value={password}
-                    onChangeText={setPassword}
-                    secureTextEntry
-                />
+  return (
+    <View style={styles.container}>
+      <Image
+        source={require('../../assets/logo1.png')}
+        style={styles.logo}
+        resizeMode="cover"
+      />
+      <Text style={styles.title}>Login</Text>
+      <TextInput
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+        style={styles.input}
+      />
+      <TextInput
+        placeholder="Senha"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry={!isPasswordVisible} // Alterna a visibilidade
+        style={styles.input}
+      />
+      <Pressable onPress={() => setIsPasswordVisible(!isPasswordVisible)} style={styles.togglePasswordButton}>
+        <Text style={styles.togglePasswordText}>{isPasswordVisible ? 'Ocultar' : 'Mostrar'}</Text>
+      </Pressable>
+      <Pressable onPress={handleLogin} style={styles.submitButton}>
+        <Text style={styles.submitButtonText}>Login</Text>
+      </Pressable>
+      <Text style={styles.toggleModeText} onPress={handleSignUpRedirect}>
+        Não tem uma conta? Cadastre-se
+      </Text>
+    </View>
+  );
+}
 
-                <Pressable
-                    style={styles.submitButton}
-                    onPress={isLogin ? handleLogin : handleRegister}
-                >
-                    <Text style={styles.submitButtonText}>
-                        {isLogin ? 'Entrar' : 'Cadastrar'}
-                    </Text>
-                </Pressable>
+// Função de migração do banco de dados
+async function migrateDbIfNeeded(db: SQLiteDatabase) {
+  const DATABASE_VERSION = 1;
 
-                <Pressable
-                    style={styles.toggleButton}
-                    onPress={() => setIsLogin(!isLogin)}
-                >
-                    <Text style={styles.toggleButtonText}>
-                        {isLogin
-                            ? 'Não tem uma conta? Cadastre-se'
-                            : 'Já tem uma conta? Faça login'}
-                    </Text>
-                </Pressable>
-            </View>
-        </SafeAreaView>
-    );
-};
+  const result = await db.getFirstAsync<{ user_version: number }>('PRAGMA user_version');
+  const currentDbVersion = result ? result.user_version : 0;
+
+  if (currentDbVersion >= DATABASE_VERSION) {
+    return;
+  }
+
+  if (currentDbVersion === 0) {
+    await db.execAsync(`PRAGMA journal_mode = 'wal';`);
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        name TEXT NOT NULL,
+        email TEXT NOT NULL UNIQUE,
+        password TEXT NOT NULL
+      );
+    `);
+    console.log("Tabela 'users' criada com sucesso.");
+  }
+
+  await db.execAsync(`PRAGMA user_version = ${DATABASE_VERSION}`);
+}
 
 const styles = StyleSheet.create({
-    safeArea: {
-        flex: 1,
-        backgroundColor:'#ffffff'
-    },
-    logo: {
-        width: 250,
-        height: 250,
-        alignSelf: 'center',
-        marginBottom: 20,
-    },
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20,
-        backgroundColor: '#ffffff',
-        borderRadius: 10,
-        marginHorizontal: 20,
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 20,
-    },
-    input: {
-        width: '100%',
-        height: 50,
-        backgroundColor: '#FFF',
-        borderRadius: 8,
-        paddingHorizontal: 15,
-        marginBottom: 15,
-        fontSize: 16,
-        borderColor: '#CCC',
-        borderWidth: 1,
-    },
-    submitButton: {
-        backgroundColor: '#005999',
-        borderRadius: 8,
-        paddingVertical: 15,
-        paddingHorizontal: 40,
-        marginBottom: 15,
-    },
-    submitButtonText: {
-        color: '#FFFFFF',
-        fontSize: 18,
-        fontWeight: 'bold',
-        textAlign: 'center',
-    },
-    toggleButton: {
-        marginTop: 10,
-    },
-    toggleButtonText: {
-        color: '#005999',
-        fontSize: 16,
-        textDecorationLine: 'underline',
-    },
+  safeArea: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#FFF',
+    marginTop: 10,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  logo: {
+    width: 300, // Ajuste o tamanho da imagem conforme necessário
+    height: 300, // Ajuste o tamanho da imagem conforme necessário
+    alignSelf: 'center', // Centraliza a imagem
+    marginBottom: 10, // Espaço abaixo da imagem
+    marginTop:20
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  input: {
+    width: '100%',
+    height: 50,
+    backgroundColor: '#FFF',
+    borderRadius: 8,
+    paddingHorizontal: 15,
+    marginBottom: 15,
+    fontSize: 16,
+    borderColor: '#CCC',
+    borderWidth: 1,
+  },
+  submitButton: {
+    backgroundColor: '#005999',
+    borderRadius: 8,
+    paddingVertical: 15,
+    paddingHorizontal: 40,
+    marginBottom: 15,
+  },
+  submitButtonText: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  togglePasswordButton: {
+    alignSelf: 'flex-end',
+    marginBottom: 15,
+  },
+  togglePasswordText: {
+    fontSize: 16,
+    color: '#005999',
+  },
+  toggleModeText: {
+    fontSize: 16,
+    color: '#005999',
+    textAlign: 'center',
+    marginTop: 20,
+  },
 });
-
-export default LoginScreen;
