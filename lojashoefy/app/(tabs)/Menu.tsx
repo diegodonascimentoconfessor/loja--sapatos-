@@ -36,7 +36,7 @@ function Login() {
         );
 
         if (result.length > 0) { // Verifica se há resultados
-          console.log('Usuário logado:', result);
+          console.log('Usuário logado com sucesso:', result); // Console log do login bem-sucedido
           Alert.alert('Sucesso', 'Login realizado com sucesso!', [
             {
               text: 'OK',
@@ -98,7 +98,7 @@ function Login() {
 
 // Função de migração do banco de dados
 async function migrateDbIfNeeded(db: SQLiteDatabase) {
-  const DATABASE_VERSION = 1;
+  const DATABASE_VERSION = 2; // Incrementa a versão do banco de dados
 
   const result = await db.getFirstAsync<{ user_version: number }>('PRAGMA user_version');
   const currentDbVersion = result ? result.user_version : 0;
@@ -109,6 +109,11 @@ async function migrateDbIfNeeded(db: SQLiteDatabase) {
 
   if (currentDbVersion === 0) {
     await db.execAsync(`PRAGMA journal_mode = 'wal';`);
+    
+    // Deleta a tabela users se já existir
+    await db.execAsync(`DROP TABLE IF EXISTS users;`);
+
+    // Cria a tabela users com a coluna password
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -120,6 +125,7 @@ async function migrateDbIfNeeded(db: SQLiteDatabase) {
     console.log("Tabela 'users' criada com sucesso.");
   }
 
+  // Atualiza a versão do banco de dados
   await db.execAsync(`PRAGMA user_version = ${DATABASE_VERSION}`);
 }
 
@@ -128,18 +134,18 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: '#FFF',
-    marginTop: 10,
+  
   },
   container: {
     flex: 1,
     justifyContent: 'center',
   },
   logo: {
-    width: 300, // Ajuste o tamanho da imagem conforme necessário
-    height: 300, // Ajuste o tamanho da imagem conforme necessário
-    alignSelf: 'center', // Centraliza a imagem
-    marginBottom: 10, // Espaço abaixo da imagem
-    marginTop:20
+    width: 300,
+    height: 300,
+    alignSelf: 'center',
+    marginBottom: 10,
+    marginTop: 20,
   },
   title: {
     fontSize: 24,
