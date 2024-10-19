@@ -1,6 +1,5 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image, StyleSheet, Text, StatusBar, Pressable } from "react-native";  // Importando Pressable
-import { Button } from "../components/button";
 import { router } from "expo-router";
 
 export default function Screen() {
