@@ -3,8 +3,10 @@ import { View, Text, TextInput, Pressable, Alert, StyleSheet, SafeAreaView, Flat
 import { useRouter } from 'expo-router';
 import { SQLiteDatabase, SQLiteProvider, useSQLiteContext } from 'expo-sqlite';
 
+
 interface Product {
   id: number;
+
   idCategory: string;
   image: string;
   title: string;
