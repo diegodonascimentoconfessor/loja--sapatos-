@@ -36,7 +36,7 @@ export const data: Data = {
     ],
     products: [
         // Categoria: Tênis (25 produtos)
-        { id: 1, idCategory: 1, image: "https://m.media-amazon.com/images/I/61948-pIgYL._AC_SY575_.jpg", title: "Tênis Esportivo X1", description: "Confortável para correr.", price: 199.99 },
+        { id: 1, idCategory: 1, image: "https://m.media-amazon.com/images/I/61948-pIgYL._AC_SY575_.jpg", title: "Tênis Esportivo X1", description: "Confortável para correr.", price: 199.99},
         { id: 2, idCategory: 1, image: "https://http2.mlstatic.com/D_NQ_NP_866786-MLB77623586470_072024-O.webp", title: "Tênis de Corrida", description: "Leve, ideal para alta performance.", price: 299.99 },
         { id: 3, idCategory: 1, image: "https://static.netshoes.com.br/produtos/tenis-adidas-breaknet-masculino/90/NQQ-4378-890/NQQ-4378-890_zoom1.jpg?ts=1724755093?ims=1088x", title: "Tênis Casual", description: "Design moderno e confortável.", price: 149.99 },
     { id: 2, idCategory: 1, image: "https://static.netshoes.com.br/produtos/tenis-adidas-response-runner/18/FB9-8539-218/FB9-8539-218_zoom1.jpg?ts=1723226790?ims=1088x", title: "Tênis de Corrida", description: "Leve, ideal para alta performance.", price: 299.99 },
