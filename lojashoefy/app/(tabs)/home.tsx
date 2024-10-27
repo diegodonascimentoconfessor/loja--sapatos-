@@ -46,7 +46,7 @@ function WelcomeScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Bem-vindo ao Shoefy!</Text>
       <Pressable style={styles.navigateLink} onPress={() => router.replace('/CadastrarProdutos')}>
-        <Text style={styles.navigateLinkText}>Cadastrar Novo Produto</Text>
+        <Text style={styles.navigateLinkText}>Confira nossos Prdutos</Text>
       </Pressable>
       {/* Lista de produtos */}
       <FlatList
