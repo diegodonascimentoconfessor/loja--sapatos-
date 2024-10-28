@@ -46,7 +46,7 @@ function WelcomeScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Bem-vindo ao Shoefy!</Text>
       <Pressable style={styles.navigateLink} onPress={() => router.replace('/CadastrarProdutos')}>
-        <Text style={styles.navigateLinkText}>Confira nossos Prdutos</Text>
+        <Text style={styles.navigateLinkText}>Confira nossos Produtos</Text>
       </Pressable>
       {/* Lista de produtos */}
       <FlatList
@@ -54,15 +54,15 @@ function WelcomeScreen() {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <View style={styles.productItem}>
-            <Text style={styles.productCategory}>Categoria: {item.idCategory}</Text>
-            <Text style={styles.productTitle}>Título: {item.title}</Text>
-            <Text style={styles.productDescription}>{item.description}</Text>
-            <Text style={styles.productPrice}>Preço: R$ {item.price}</Text>
             {item.image ? (
               <Image source={{ uri: item.image }} style={styles.productImage} />
             ) : (
               <Text>Sem imagem disponível</Text>
             )}
+            <Text style={styles.productCategory}>Categoria: {item.idCategory}</Text>
+            <Text style={styles.productTitle}>Título: {item.title}</Text>
+            <Text style={styles.productDescription}>{item.description}</Text>
+            <Text style={styles.productPrice}>Preço: R$ {item.price}</Text>
           </View>
         )}
       />
@@ -175,23 +175,25 @@ async function migrateDbIfNeeded(db: SQLiteDatabase) {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    width:'100%',
-    padding: 20,
+    width: '100%',
+    
+    padding:60,
     backgroundColor: '#ffff',
-    justifyContent:"center"
+    justifyContent: 'center'
   },
   container: {
-    width:'100%',
+    width: '100%',
     flex: 1,
     justifyContent: 'center',
+   
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom:0,
     textAlign: 'center',
-   
-
+    backgroundColor: '#000A3C',
+    color:'#ffffff'
   },
   input: {
     width: '100%',
@@ -220,45 +222,47 @@ const styles = StyleSheet.create({
   navigateLink: {
     padding: 10,
     marginBottom: 15,
+    backgroundColor: '#000A3C'
   },
   navigateLinkText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#000A3C',
     textAlign: 'center',
+     backgroundColor: '#000A3C',
+    color:'#ffffff'
   },
   productItem: {
     padding: 10,
+    alignItems: 'center', // Centraliza o conteúdo
     borderBottomWidth: 1,
-    borderBottomColor: '#CCC',
+    borderBottomColor: '#ffff',
   },
   productCategory: {
     fontSize: 16,
     color: '#000A3C',
-    
     fontWeight: 'bold',
-    
+    textAlign: 'center',
   },
   productTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    backgroundColor:''
+    textAlign: 'center',
   },
   productDescription: {
     fontSize: 14,
     color: '#03033F',
-   
+    textAlign: 'center',
   },
   productPrice: {
     fontSize: 16,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   productImage: {
-    width: '70%',
-    height: 300,
+    width: '100%', 
+    height: 200,
     marginTop: 10,
     marginBottom: 10,
-
+    resizeMode: 'contain',
   },
 });
-
