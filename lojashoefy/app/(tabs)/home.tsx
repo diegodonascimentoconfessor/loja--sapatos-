@@ -175,10 +175,13 @@ async function migrateDbIfNeeded(db: SQLiteDatabase) {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
+    width:'100%',
     padding: 20,
-    backgroundColor: '#F8F8F8',
+    backgroundColor: '#ffff',
+    justifyContent:"center"
   },
   container: {
+    width:'100%',
     flex: 1,
     justifyContent: 'center',
   },
@@ -187,6 +190,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
+   
+
   },
   input: {
     width: '100%',
@@ -229,26 +234,31 @@ const styles = StyleSheet.create({
   },
   productCategory: {
     fontSize: 16,
-    color: '#666',
+    color: '#000A3C',
+    
     fontWeight: 'bold',
+    
   },
   productTitle: {
     fontSize: 18,
     fontWeight: 'bold',
+    backgroundColor:''
   },
   productDescription: {
     fontSize: 14,
-    color: '#666',
+    color: '#03033F',
+   
   },
   productPrice: {
     fontSize: 16,
     fontWeight: 'bold',
   },
   productImage: {
-    width: 100,
-    height: 100,
+    width: '70%',
+    height: 300,
     marginTop: 10,
     marginBottom: 10,
+
   },
 });
 

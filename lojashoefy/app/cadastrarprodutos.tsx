@@ -3,10 +3,8 @@ import { View, Text, TextInput, Pressable, Alert, StyleSheet, SafeAreaView, Flat
 import { useRouter } from 'expo-router';
 import { SQLiteDatabase, SQLiteProvider, useSQLiteContext } from 'expo-sqlite';
 
-
 interface Product {
   id: number;
-
   idCategory: string;
   image: string;
   title: string;
@@ -131,9 +129,13 @@ function CadastrarProdutos() {
             <Text style={styles.productTitle}>Título: {item.title}</Text>
             <Text style={styles.productDescription}>{item.description}</Text>
             <Text style={styles.productPrice}>Preço: R$ {item.price}</Text>
-            {/* Exibe a imagem se houver uma URL */}
+            {/* Exibe a imagem se houver uma URL e captura erros de carregamento */}
             {item.image ? (
-              <Image source={{ uri: item.image }} style={styles.productImage} />
+              <Image
+                source={{ uri: item.image }}
+                style={styles.productImage}
+                onError={() => console.log("Erro ao carregar a imagem:", item.image)}
+              />
             ) : (
               <Text>Sem imagem disponível</Text>
             )}
@@ -178,7 +180,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: '#F8F8F8',
-    marginTop:30
+    marginTop: 30,
   },
   container: {
     flex: 1,
@@ -237,7 +239,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   productImage: {
-    width: 100,
+    width: '100%',
     height: 100,
     marginTop: 10,
     marginBottom: 10,
