@@ -217,16 +217,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   productItem: {
+    flex: 1,
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#CCC',
   },
   productCategory: {
+    flex:1,
     fontSize: 16,
-    color: '#666',
+    color: '#ffffff',
     fontWeight: 'bold',
   },
   productTitle: {
+    flex:1,
     fontSize: 18,
     fontWeight: 'bold',
   },
@@ -236,7 +239,8 @@ const styles = StyleSheet.create({
   },
   productPrice: {
     fontSize: 16,
-    fontWeight: 'bold',
+  
+    color:'#000A3C'
   },
   productImage: {
     width: '100%',

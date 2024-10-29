@@ -71,77 +71,6 @@ function WelcomeScreen() {
 }
 
 // Função de cadastro de produtos (CadastrarProdutos)
-function CadastrarProdutos() {
-  const router = useRouter();
-  const db = useSQLiteContext();
-  const [product, setProduct] = useState<Product>({
-    id: 0,
-    idCategory: '',
-    image: '',
-    title: '',
-    description: '',
-    price: '',
-  });
-
-  const handleRegister = async () => {
-    if (product.idCategory && product.image && product.title && product.price) {
-      try {
-        await db.runAsync(
-          'INSERT INTO products (idCategory, image, title, description, price) VALUES (?, ?, ?, ?, ?)',
-          [product.idCategory, product.image, product.title, product.description, product.price]
-        );
-        Alert.alert('Sucesso', 'Produto cadastrado com sucesso!');
-        router.replace('/home'); // Retorna à tela inicial após o cadastro
-      } catch (error) {
-        console.error('Erro ao salvar o produto no banco de dados', error);
-        Alert.alert('Erro', 'Não foi possível cadastrar o produto.');
-      }
-    } else {
-      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
-    }
-  };
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Cadastrar Produto</Text>
-      <TextInput
-        placeholder="ID Categoria"
-        value={product.idCategory}
-        onChangeText={(text) => setProduct({ ...product, idCategory: text })}
-        keyboardType="numeric"
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="URL da Imagem"
-        value={product.image}
-        onChangeText={(text) => setProduct({ ...product, image: text })}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Título do Produto"
-        value={product.title}
-        onChangeText={(text) => setProduct({ ...product, title: text })}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Descrição"
-        value={product.description}
-        onChangeText={(text) => setProduct({ ...product, description: text })}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Preço"
-        value={product.price}
-        onChangeText={(text) => setProduct({ ...product, price: text })}
-        keyboardType="numeric"
-        style={styles.input}
-      />
-      <Pressable onPress={handleRegister} style={styles.submitButton}>
-        <Text style={styles.submitButtonText}>Cadastrar Produto</Text>
-      </Pressable>
-    </View>
-  );
-}
 
 // Função de migração do banco de dados
 async function migrateDbIfNeeded(db: SQLiteDatabase) {
@@ -175,26 +104,24 @@ async function migrateDbIfNeeded(db: SQLiteDatabase) {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-   width:'100%',
-   height:900,
-    padding:60,
+    padding: 60,
     backgroundColor: '#ffff',
     justifyContent: 'center'
   },
   container: {
-    width: '100%',
-    height:400,
     flex: 1,
+    height: 400,
     justifyContent: 'center',
-   
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom:0,
+    marginBottom: 0,
     textAlign: 'center',
     backgroundColor: '#000A3C',
-    color:'#ffffff'
+    color: '#ffffff',
+    width: '100%', // Define a largura completa da tela
+    paddingVertical: 15, // Adiciona padding vertical para melhorar a aparência
   },
   input: {
     width: '100%',
@@ -223,21 +150,20 @@ const styles = StyleSheet.create({
   navigateLink: {
     padding: 10,
     marginBottom: 15,
-    backgroundColor: '#000A3C'
+    backgroundColor: '#000A3C',
+    width: '100%', // Define a largura completa da tela
   },
   navigateLinkText: {
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
-     backgroundColor: '#000A3C',
-    color:'#ffffff'
+    color: '#ffffff',
   },
   productItem: {
     padding: 10,
     alignItems: 'center', // Centraliza o conteúdo
     borderBottomWidth: 0,
     borderBottomColor: '#ffff',
-    color:'#fffff'
   },
   productCategory: {
     fontSize: 16,
@@ -249,7 +175,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
-    
   },
   productDescription: {
     fontSize: 14,
