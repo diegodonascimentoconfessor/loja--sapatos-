@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Pressable, Alert, StyleSheet, SafeAreaView, FlatList, Image } from 'react-native';
+import { View, Text, Pressable,  StyleSheet, SafeAreaView, FlatList, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SQLiteDatabase, SQLiteProvider, useSQLiteContext } from 'expo-sqlite';
 
