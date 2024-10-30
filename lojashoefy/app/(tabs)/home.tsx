@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Pressable,  StyleSheet, SafeAreaView, FlatList, Image } from 'react-native';
+import { View, Text, Pressable, StyleSheet, SafeAreaView, FlatList, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SQLiteDatabase, SQLiteProvider, useSQLiteContext } from 'expo-sqlite';
 
@@ -28,6 +28,7 @@ function WelcomeScreen() {
   const router = useRouter();
   const db = useSQLiteContext();
   const [productsList, setProductsList] = useState<Product[]>([]);
+  const [groupedProducts, setGroupedProducts] = useState<{ [key: string]: Product[] }>({});
 
   useEffect(() => {
     fetchProducts();
@@ -36,11 +37,36 @@ function WelcomeScreen() {
   const fetchProducts = async () => {
     try {
       const result = await db.getAllAsync('SELECT * FROM products');
-      setProductsList(result as Product[]);
+      const products = result as Product[];
+
+      // Agrupa os produtos por categoria
+      const grouped = products.reduce((acc: { [key: string]: Product[] }, product) => {
+        if (!acc[product.idCategory]) {
+          acc[product.idCategory] = [];
+        }
+        acc[product.idCategory].push(product);
+        return acc;
+      }, {});
+      
+      setProductsList(products);
+      setGroupedProducts(grouped);
     } catch (error) {
       console.error('Erro ao buscar produtos', error);
     }
   };
+
+  const renderProduct = ({ item }: { item: Product }) => (
+    <View style={styles.productItem}>
+      {item.image ? (
+        <Image source={{ uri: item.image }} style={styles.productImage} />
+      ) : (
+        <Text>Sem imagem disponível</Text>
+      )}
+      <Text style={styles.productTitle}>Título: {item.title}</Text>
+      <Text style={styles.productDescription}>{item.description}</Text>
+      <Text style={styles.productPrice}>Preço: R$ {item.price}</Text>
+    </View>
+  );
 
   return (
     <View style={styles.container}>
@@ -48,29 +74,25 @@ function WelcomeScreen() {
       <Pressable style={styles.navigateLink} onPress={() => router.replace('/CadastrarProdutos')}>
         <Text style={styles.navigateLinkText}>Confira nossos Produtos</Text>
       </Pressable>
-      {/* Lista de produtos */}
+
+      {/* Lista de produtos separados por categoria */}
       <FlatList
-        data={productsList}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <View style={styles.productItem}>
-            {item.image ? (
-              <Image source={{ uri: item.image }} style={styles.productImage} />
-            ) : (
-              <Text>Sem imagem disponível</Text>
-            )}
-            <Text style={styles.productCategory}>Categoria: {item.idCategory}</Text>
-            <Text style={styles.productTitle}>Título: {item.title}</Text>
-            <Text style={styles.productDescription}>{item.description}</Text>
-            <Text style={styles.productPrice}>Preço: R$ {item.price}</Text>
+        data={Object.keys(groupedProducts)}
+        keyExtractor={(category) => category}
+        renderItem={({ item: category }) => (
+          <View>
+            <Text style={styles.categoryHeader}>Categoria: {category}</Text>
+            <FlatList
+              data={groupedProducts[category]}
+              keyExtractor={(item) => item.id.toString()}
+              renderItem={renderProduct}
+            />
           </View>
         )}
       />
     </View>
   );
 }
-
-// Função de cadastro de produtos (CadastrarProdutos)
 
 // Função de migração do banco de dados
 async function migrateDbIfNeeded(db: SQLiteDatabase) {
@@ -120,38 +142,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: '#000A3C',
     color: '#ffffff',
-    width: '100%', // Define a largura completa da tela
-    paddingVertical: 15, // Adiciona padding vertical para melhorar a aparência
-  },
-  input: {
     width: '100%',
-    height: 50,
-    backgroundColor: '#FFF',
-    borderRadius: 8,
-    paddingHorizontal: 15,
-    marginBottom: 15,
-    fontSize: 16,
-    borderColor: '#CCC',
-    borderWidth: 1,
-  },
-  submitButton: {
-    backgroundColor: '#000A3C',
-    borderRadius: 8,
     paddingVertical: 15,
-    paddingHorizontal: 40,
-    marginBottom: 15,
-  },
-  submitButtonText: {
-    color: '#FFFFFF',
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
   },
   navigateLink: {
     padding: 10,
     marginBottom: 15,
     backgroundColor: '#000A3C',
-    width: '100%', // Define a largura completa da tela
+    width: '100%',
   },
   navigateLinkText: {
     fontSize: 16,
@@ -159,17 +157,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#ffffff',
   },
+  categoryHeader: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#000A3C',
+    marginTop: 20,
+    marginBottom: 10,
+    textAlign: 'center',
+  },
   productItem: {
     padding: 10,
-    alignItems: 'center', // Centraliza o conteúdo
+    alignItems: 'center',
     borderBottomWidth: 0,
     borderBottomColor: '#ffff',
-  },
-  productCategory: {
-    fontSize: 16,
-    color: '#000A3C',
-    fontWeight: 'bold',
-    textAlign: 'center',
   },
   productTitle: {
     fontSize: 18,
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   productImage: {
-    width: '100%', 
+    width: '100%',
     height: 200,
     marginTop: 10,
     marginBottom: 10,

@@ -12,6 +12,9 @@ export const CategoryItem = ({ data }: Props) => {
     }
 
     return (
+
+
+        
         <SafeAreaView style={styles.safeArea}>
             <Pressable onPress={click} style={styles.container}>
                 <Image
