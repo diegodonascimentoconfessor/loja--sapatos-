@@ -6,7 +6,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: '#000A3C', // Define a cor da barra
+          backgroundColor: '#000A3C', /// Define a cor da barra
         },
         tabBarActiveTintColor: '#000A3C', // Cor dos ícones e títulos ativos (branca)
         tabBarActiveBackgroundColor:'#ffffff',
