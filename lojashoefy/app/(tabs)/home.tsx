@@ -27,7 +27,7 @@ export default function App() {
 function WelcomeScreen() {
   const router = useRouter();
   const db = useSQLiteContext();
-  const [productsList, setProductsList] = useState<Product[]>([]);
+  const [,setProductsList] = useState<Product[]>([]);
   const [groupedProducts, setGroupedProducts] = useState<{ [key: string]: Product[] }>({});
 
   useEffect(() => {

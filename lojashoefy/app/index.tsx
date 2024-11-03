@@ -8,7 +8,7 @@ export default function Screen() {
     };
 
     const goToCadastro = () => {
-        router.push('/cadastrarprodutos');  
+        router.navigate('/cadastrarprodutos');  
     };
 
     return (

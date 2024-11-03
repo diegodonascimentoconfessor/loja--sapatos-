@@ -3,7 +3,7 @@ import { View, Text, TextInput, Pressable, Alert, StyleSheet, SafeAreaView, Imag
 import { useRouter } from 'expo-router';
 import { SQLiteDatabase, SQLiteProvider, useSQLiteContext } from 'expo-sqlite';
 
-interface User {
+interface user {
   id: number;
   name: string;
   email: string;

@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet, FlatList } from "react-native";
-import { getAllProducts, getProductByCategory } from "../../../services/product";
+import { View, StyleSheet, FlatList } from "react-native";
+import {  getProductByCategory } from "../../../services/product";
 import { ProductItem } from "../../../components/product-item";
 import { router, Stack, useLocalSearchParams } from "expo-router";
 import { getCategoryById } from "../../../services/category";
